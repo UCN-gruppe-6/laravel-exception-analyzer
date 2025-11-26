@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace NikolajVE\LaravelExceptionAnalyzer\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelExceptionAnalyzerCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-exception-analyzer';
 
     public $description = 'My command';
 
