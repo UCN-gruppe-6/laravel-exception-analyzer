@@ -29,6 +29,8 @@ class LaravelExceptionAnalyzer extends Facade
 
             $reportClient->report($exception);
 
+            // test comment
+
             return $reportClient;
         };
 
