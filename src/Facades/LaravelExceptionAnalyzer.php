@@ -5,15 +5,16 @@ namespace LaravelExceptionAnalyzer\Facades;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Facade;
+use LaravelExceptionAnalyzer\Clients\ReportClient;
 
 /**
- * @see LaravelExceptionAnalyzer\LaravelExceptionAnalyzer
+ * @see LaravelExceptionAnalyzer
  */
 class LaravelExceptionAnalyzer extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return LaravelExceptionAnalyzer\LaravelExceptionAnalyzer::class;
+        return LaravelExceptionAnalyzer::class;
     }
 
     public static function handles(?Exceptions $exceptions = null): void
