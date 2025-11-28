@@ -19,7 +19,7 @@ class LaravelExceptionAnalyzer extends Facade
     public static function handles(?Exceptions $exceptions = null): void
     {
         $reportable = static function (\Throwable $exception): ?ReportClient {
-            $config = config('LaravelExceptionAnalyzer');
+            $config = config('LaravelExceptionAnalyzerConfig');
 
             if(($config['isEnabled'] ?? false) === false) {
                 return null;
