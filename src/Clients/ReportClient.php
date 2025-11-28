@@ -21,8 +21,8 @@ class ReportClient
             'url' => request()->fullUrl() ?? null,
             'hostname' => gethostname() ?: 'unknown',
             'stack_trace' => $e->getTraceAsString(),
-            'user_id' => $user->id ?? null,
-            'user_email' => $user->email ?? null,
+            'user_id' => $user?->id ?? null,
+            'user_email' => $user?->email ?? null,
             'session_id' => session()->getId() ?? null,
             'level' => '', // #TODO: Determine how to set the level
         ];
