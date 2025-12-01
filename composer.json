@@ -32,13 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "NikolajVE\\LaravelExceptionAnalyzer\\": "src/",
-            "NikolajVE\\LaravelExceptionAnalyzer\\Database\\Factories\\": "database/factories/"
+            "LaravelExceptionAnalyzer\\": "src/",
+            "LaravelExceptionAnalyzer\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "NikolajVE\\LaravelExceptionAnalyzer\\Tests\\": "tests/",
+            "LaravelExceptionAnalyzer\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NikolajVE\\LaravelExceptionAnalyzer\\LaravelExceptionAnalyzerServiceProvider"
+                "LaravelExceptionAnalyzer\\LaravelExceptionAnalyzerServiceProvider"
             ],
             "aliases": {
-                "LaravelExceptionAnalyzer": "NikolajVE\\LaravelExceptionAnalyzer\\Facades\\LaravelExceptionAnalyzer"
+                "LaravelExceptionAnalyzer": "LaravelExceptionAnalyzer\\Facades\\LaravelExceptionAnalyzer"
             }
         }
     },

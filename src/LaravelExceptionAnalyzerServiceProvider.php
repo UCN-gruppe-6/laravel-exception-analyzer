@@ -5,9 +5,9 @@ namespace NikolajVE\LaravelExceptionAnalyzer;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use NikolajVE\LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
-use NikolajVE\LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
+use LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
 use NikolajVE\LaravelExceptionAnalyzer\Clients\ReportClient;
-use NikolajVE\LaravelExceptionAnalyzer\AI\AiClient;
+use LaravelExceptionAnalyzer\AI\AiClient;
 
 /**
  * LaravelExceptionAnalyzerServiceProvider

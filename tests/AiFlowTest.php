@@ -3,7 +3,7 @@
 namespace NikolajVE\LaravelExceptionAnalyzer\Tests;
 
 use Illuminate\Support\Facades\Http;
-use NikolajVE\LaravelExceptionAnalyzer\AI\AiClient;
+use LaravelExceptionAnalyzer\AI\AiClient;
 use NikolajVE\LaravelExceptionAnalyzer\LaravelExceptionAnalyzer;
 use Throwable;
 

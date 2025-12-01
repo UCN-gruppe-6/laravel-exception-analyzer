@@ -1,10 +1,13 @@
 <?php
 
 
-namespace NikolajVE\LaravelExceptionAnalyzer\AI;
+namespace LaravelExceptionAnalyzer\AI;
 
-use Throwable;
-use Illuminate\Support\Facades\Http;
+use LaravelExceptionAnalyzer\AI\AiClassificationResult;
+use LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
+use Prism\Prism\Facades\Prism;
+use Prism\Prism\Schema\ObjectSchema;
+use Prism\Prism\Schema\StringSchema;
 
 /**
  * AiClient
@@ -16,9 +19,6 @@ use Illuminate\Support\Facades\Http;
  */
 class AiClient
 {
-    public function __construct(
-        private readonly ExceptionSanitizer $sanitizer,
-    ) {}
 
     /**
      * Sends a sanitized exception to the AI service and returns the classification result.
@@ -42,7 +42,7 @@ class AiClient
          *
          * If disabled, the system should behave gracefully and simply skip AI processing.
          */
-        if(!($config['enabled'] ?? false)) {
+        if (!($config['enabled'] ?? false)) {
             return null;
         }
 
@@ -53,51 +53,49 @@ class AiClient
          * - API key (authentication)
          * - Endpoint (destination URL)
          */
-        if(empty($config['api_key']) || empty($config['endpoint'])) {
+        if (empty($config['api_key'])) {
             return null;
         }
 
-        /**
-         * 3. Sanitize the exception payload.
-         *
-         * This prevents sensitive or irrelevant information from being sent to the AI.
-         */
-        $payload = $this->sanitizer->sanitize($exceptionData);
+        $payload = ExceptionSanitizer::sanitize($exceptionData);
 
-        /**
-         * 4. Send the sanitized payload to the AI model.
-         *
-         * The request:
-         * - is authenticated with the API key
-         * - includes a timeout
-         * - wraps the sanitized exception data inside the "exception" key
-         */
-        $response = Http::withToken($config['api_key'])
-            ->timeout($config['timeout'] ?? 5)
-            ->post($config['endpoint'],
-                ['exception' => $payload
-                ]);
+        $client = Prism::client($config['api_key']);
 
-        /**
-         * 5. Validate the HTTP response.
-         *
-         * If the AI service returns any non-2xx status, we do not attempt to parse the output.
-         */
-        if(!$response->successful()) {
+        $schema = new ObjectSchema(
+            name: 'exception_classification',
+            description: 'Classification of a Laravel exception',
+            properties: [
+                new StringSchema('category', 'High-level category'),
+                new StringSchema('source', 'Source/system of the exception'),
+                new StringSchema('severity', 'Severity level'),
+                new StringSchema('status_message', 'Short human-readable summary'),
+            ],
+            requiredFields: ['category', 'source', 'severity', 'status_message'],
+        );
+
+        $prompt = "
+            You are an exception classification engine.
+            Classify the following exception into:
+            - category
+            - source
+            - severity
+            - status_message
+
+            Exception:
+            " . json_encode($payload, JSON_PRETTY_PRINT);
+
+        $response = $client->structured()
+            ->schema($schema)
+            ->prompt($prompt)
+            ->generate();
+
+        if (!$response->valid()) {
             return null;
         }
 
-        // Retrieve JSON data from the response body
-        $data = $response->json();
+        $data = $response->output();
 
-        // Defensive: Ensure the response is an associative array
-        if (!is_array($data)) {
-            return null;
-        }
-
-
-        return AiClassificationResult::fromArray($data);
-
+        return AiClassificationResult::fromArray(is_array($data) ? $data : []);
 
     }
 }

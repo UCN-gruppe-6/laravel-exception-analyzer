@@ -1,7 +1,7 @@
 <?php
 
 
-namespace NikolajVE\LaravelExceptionAnalyzer\AI;
+namespace LaravelExceptionAnalyzer\AI;
 
 /**
  * This class represent the AI classification result.

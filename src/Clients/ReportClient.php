@@ -1,9 +1,11 @@
 <?php
 
-namespace NikolajVE\LaravelExceptionAnalyzer\Clients;
+namespace LaravelExceptionAnalyzer\Clients;
 
+use Illuminate\Support\Facades\Auth;
+use LaravelExceptionAnalyzer\Models\ExceptionModel;
 use Throwable;
-use NikolajVE\LaravelExceptionAnalyzer\AI\AiClient;
+use LaravelExceptionAnalyzer\AI\AiClient;
 
 /**
  * ReportClient
@@ -17,44 +19,57 @@ use NikolajVE\LaravelExceptionAnalyzer\AI\AiClient;
  */
 class ReportClient
 {
-    public function __construct(
-        private readonly AiClient $aiClient,
-    ) {}
 
-    /**
-     * Handle and process the given exception.
-     *
-     * Current flow:
-     * 1. Forward the exception to AiClient::classify().
-     * 2. If a classification result is returned, log it temporarily.
-     * 3. (Future step) Save both the exception and AI result in the database.
-     * @param Throwable $exception  The exception captured by Laravel.
-     */
-    public function report(Throwable $exception): void
+    public static function report(Throwable $e): void
     {
-        /**
-         * 1. Call AI for classification.
-         *
-         * AiClient will:
-         * - sanitize the exception,
-         * - send it to the external AI endpoint,
-         * - return an AiClassificationResult or null.
-         */
-        $result = $this->aiClient->classify($exception);
+        $exception = self::createExceptionArray($e);
 
-        /**
-         * 2. Temporary: Log the classification result.
-         *
-         * This is a placeholder for future persistence logic.
-         * Once the database schema is ready, we will store:
-         * - the original exception data
-         * - the AI classification metadata
-         */
-        if ($result !== null) {
-            // midlertidig test: log resultatet
-            logger()->info('AI classified exception', $result->toArray());
+        if (config('REPORT_EXCEPTIONS_API_URL') === false) {
+            // Not yet implemented
+            self::sendToExternalService($exception);
+
+            return;
         }
 
-        //2) TODO: Save exception to database
+        ExceptionModel::create(
+            $exception
+        );
+
+        /** @var AiClient $aiClient */
+        $aiClient = app(AiClient::class);
+
+        $result = $aiClient->classify($exception);
+
+        if ($result !== null) {
+            logger()->info('AI classified exception', [
+                'exception'      => $exception,
+                'classification' => $result->toArray(),
+            ]);
+        }
+    }
+
+    private static function createExceptionArray(Throwable $exception): array
+    {
+        $user = Auth::user();
+
+        return [
+            'message' => $exception->getMessage(),
+            'type' => get_class($exception),
+            'code' => (string)$exception->getCode(),
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine(),
+            'url' => request()->fullUrl() ?? null,
+            'hostname' => gethostname() ?: 'unknown',
+            'stack_trace' => $exception->getTraceAsString(),
+            'user_id' => $user?->id ?? null,
+            'user_email' => $user?->email ?? null,
+            'session_id' => session()->getId() ?? null,
+            'level' => '', // #TODO: Determine how to set the level
+        ];
+    }
+
+    private static function sendToExternalService(array $exception): void
+    {
+        // Implement sending to an external service if needed.
     }
 }

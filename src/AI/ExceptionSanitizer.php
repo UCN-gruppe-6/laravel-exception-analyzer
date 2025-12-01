@@ -1,10 +1,7 @@
 <?php
 
 
-namespace NikolajVE\LaravelExceptionAnalyzer\AI;
-
-
-use Throwable;
+namespace LaravelExceptionAnalyzer\AI;
 
 /**
  * ExceptionSanitizer
@@ -17,11 +14,6 @@ class ExceptionSanitizer
 {
     /**
      * Sanitize an exception into a safe, structured array.
-     *
-     * This method extracts only the essential and non-sensitive attributes
-     * of a Throwable. These values form the payload that is sent to the AI
-     * during classification.
-     *
      * Current fields include:
      * - message: A human-readable explanation of the error.
      * - code: Optional numeric error code.
@@ -31,17 +23,13 @@ class ExceptionSanitizer
      *
      * This provides the AI with enough context to classify the exception
      * without exposing internal request data or personal information.
-     *
-     * @param Throwable $exception  The exception that occurred.
-     * @return array                Sanitized exception details.
      */
-    public function sanitize(array $exception): array
+    public static function sanitize(array $exception): array
     {
         return [
             'message' => $exception['message'] ?? null,
             'type'    => $exception['type'] ?? null,
             'code'    => $exception['code'] ?? null,
-            'class'   => $exception::class,
             'file'     => $exception['file'] ?? null,
             'line'     => $exception['line'] ?? null,
         ];
