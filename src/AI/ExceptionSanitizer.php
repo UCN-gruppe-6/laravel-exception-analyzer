@@ -35,14 +35,15 @@ class ExceptionSanitizer
      * @param Throwable $exception  The exception that occurred.
      * @return array                Sanitized exception details.
      */
-    public function sanitize(Throwable $exception): array
+    public function sanitize(array $exception): array
     {
         return [
-            'message' => $exception->getMessage(),
-            'code'    => $exception->getCode(),
+            'message' => $exception['message'] ?? null,
+            'type'    => $exception['type'] ?? null,
+            'code'    => $exception['code'] ?? null,
             'class'   => $exception::class,
-            'file'     => $exception->getFile(),
-            'line'     => $exception->getLine(),
+            'file'     => $exception['file'] ?? null,
+            'line'     => $exception['line'] ?? null,
         ];
     }
 }

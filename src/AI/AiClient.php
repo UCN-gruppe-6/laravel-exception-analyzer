@@ -31,11 +31,8 @@ class AiClient
      * 5. Convert the response into an AiClassificationResult.
      *
      * Returns null if classification is disabled, config is incomplete, or API request fails.
-     *
-     * @param Throwable $exception  The exception captured by the system.
-     * @return AiClassificationResult|null
      */
-    public function classify(Throwable $exception): ?AiClassificationResult
+    public function classify(array $exceptionData): ?AiClassificationResult
     {
         // Fetch the AI config block from our package config file
         $config = config('laravel-exception-analyzer.ai');
@@ -65,7 +62,7 @@ class AiClient
          *
          * This prevents sensitive or irrelevant information from being sent to the AI.
          */
-        $payload = $this->sanitizer->sanitize($exception);
+        $payload = $this->sanitizer->sanitize($exceptionData);
 
         /**
          * 4. Send the sanitized payload to the AI model.
@@ -99,7 +96,7 @@ class AiClient
         }
 
 
-        return AiClassificationResult::fromArray(is_array($data) ? $data : []);
+        return AiClassificationResult::fromArray($data);
 
 
     }
