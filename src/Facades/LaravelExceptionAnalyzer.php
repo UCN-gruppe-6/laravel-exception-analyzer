@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelExceptionAnalyzer\Facades;
+namespace NikolajVE\LaravelExceptionAnalyzer\Facades;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Exceptions;
