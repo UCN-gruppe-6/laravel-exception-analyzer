@@ -35,7 +35,6 @@ class LaravelExceptionAnalyzer extends Facade
 
         if ($exceptions) {
             $exceptions->reportable($reportable);
-
             return;
         }
 
