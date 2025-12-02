@@ -3,6 +3,7 @@
 namespace LaravelExceptionAnalyzer\Clients;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use LaravelExceptionAnalyzer\Models\ExceptionModel;
 use Throwable;
 
@@ -41,6 +42,7 @@ class ReportClient
             'user_email' => $user?->email ?? null,
             'session_id' => session()->getId() ?? null,
             'level' => '', // #TODO: Determine how to set the level
+            'created_at' => now(),
         ];
     }
 
