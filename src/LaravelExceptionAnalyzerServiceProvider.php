@@ -3,7 +3,6 @@
 namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Support\Facades\Log;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

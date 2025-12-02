@@ -3,7 +3,6 @@
 namespace LaravelExceptionAnalyzer\Clients;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use LaravelExceptionAnalyzer\Models\ExceptionModel;
 use Throwable;
 
