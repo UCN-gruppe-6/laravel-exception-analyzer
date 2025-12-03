@@ -41,6 +41,7 @@ class ReportClient
             'user_email' => $user?->email ?? null,
             'session_id' => session()->getId() ?? null,
             'level' => '', // #TODO: Determine how to set the level
+            'created_at' => now(),
         ];
     }
 

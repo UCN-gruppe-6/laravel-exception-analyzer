@@ -1,6 +1,6 @@
 <?php
 
-namespace NikolajVE\LaravelExceptionAnalyzer\Commands;
+namespace LaravelExceptionAnalyzer\Commands;
 
 use Illuminate\Console\Command;
 

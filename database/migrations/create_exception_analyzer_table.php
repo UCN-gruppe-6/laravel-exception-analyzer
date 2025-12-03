@@ -24,14 +24,6 @@ return new class extends Migration
             $table->timestamp('created_at', 2)->comment('Timestamp for when the exception was created');
             $table->string('level')->comment('Severity level of the exception, e.g., error, warning, info');
         });
-
-        Schema::create('current_errors', function (Blueprint $table) {
-
-        });
-
-        Schema::create('former_errors', function (Blueprint $table) {
-
-        });
     }
 
     public function down()
