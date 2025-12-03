@@ -12,18 +12,6 @@ namespace LaravelExceptionAnalyzer\AI;
  */
 class ExceptionSanitizer
 {
-    /**
-     * Sanitize an exception into a safe, structured array.
-     * Current fields include:
-     * - message: A human-readable explanation of the error.
-     * - code: Optional numeric error code.
-     * - class: The fully qualified class name of the exception.
-     * - file: File path where the exception was thrown.
-     * - line: Line number where it occurred.
-     *
-     * This provides the AI with enough context to classify the exception
-     * without exposing internal request data or personal information.
-     */
     public static function sanitize(array $exception): array
     {
         return [

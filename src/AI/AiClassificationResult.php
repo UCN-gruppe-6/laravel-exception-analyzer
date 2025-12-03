@@ -14,9 +14,6 @@ namespace LaravelExceptionAnalyzer\AI;
  */
 class AiClassificationResult
 {
-    /**
-     * Creates an immutable (readonly) classification result object.
-     */
     public function __construct(
         public readonly string $category,
         public readonly string $source,
@@ -26,13 +23,7 @@ class AiClassificationResult
 
 
     /**
-     * Factory method that builds an AiClassificationResult from an associative array.
-     *
-     * Typically used when converting the JSON response returned by the AI service.
-     * If expected fields are missing, reasonable fallback defaults are applied.
-     *
-     * @param array $data  An associative array parsed from the AI JSON response.
-     * @return self        A fully constructed AiClassificationResult instance.
+     * Method that builds an AiClassificationResult from an associative array.
      */
     public static function fromArray(array $data): self
     {
@@ -44,14 +35,8 @@ class AiClassificationResult
         );
     }
 
-
     /**
      * Converts data back into an array.
-     *
-     * Useful for logging, storing the data in a database, or forwarding it
-     * to other internal components that expect an array format.
-     *
-     * @return array  An associative array representation of the classification result.
      */
     public function toArray(): array
     {

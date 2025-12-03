@@ -22,15 +22,6 @@ class AiClient
 
     /**
      * Sends a sanitized exception to the AI service and returns the classification result.
-     *
-     * Flow:
-     * 1. Read and validate AI configuration.
-     * 2. Sanitize the exception to avoid leaking sensitive data.
-     * 3. Perform an authenticated HTTP POST request to the AI endpoint.
-     * 4. Validate and parse the JSON response.
-     * 5. Convert the response into an AiClassificationResult.
-     *
-     * Returns null if classification is disabled, config is incomplete, or API request fails.
      */
     public function classify(array $exceptionData): ?AiClassificationResult
     {
@@ -39,8 +30,6 @@ class AiClient
 
         /**
          * 1. Check if AI classification is enabled.
-         *
-         * If disabled, the system should behave gracefully and simply skip AI processing.
          */
         if (!($config['enabled'] ?? false)) {
             return null;
@@ -48,10 +37,6 @@ class AiClient
 
         /**
          * 2. Ensure required configuration fields are available.
-         *
-         * AI classification cannot proceed without:
-         * - API key (authentication)
-         * - Endpoint (destination URL)
          */
         if (empty($config['api_key'])) {
             return null;
