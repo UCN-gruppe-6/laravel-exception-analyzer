@@ -3,17 +3,18 @@
 // config for NikolajVE/LaravelExceptionAnalyzer
 return [
     // Enable/disable reporting
-    'isEnabled' => env('LEXA_ENABLED', false),
+    'isEnabled' => env('LEA_ENABLED', false),
 
     // Client settings used by ReportClient
-    'apiKey' => env('LEXA_API_KEY', null),
-    'endpoint' => env('LEXA_ENDPOINT', null),
+    'apiKey' => env('LEA_API_KEY', null),
+    'endpoint' => env('LEA_ENDPOINT', null),
 
-    // Metadata
-    'project' => env('LEXA_PROJECT', null),
-    'environment' => env('LEXA_ENV', env('APP_ENV', 'production')),
+    // Metad
+    'project' => env('LEA_PROJECT', null),
+    'environment' => env('LEA_ENV', env('APP_ENV', 'production')),
 
-    // Optional: exceptions to ignore
+    'SLACK_WEBHOOK_URL' => env('LEA_SLACK_WEBHOOK_URL', null),
+
     'ignore' => [
         // \Illuminate\Validation\ValidationException::class,
     ],
