@@ -13,8 +13,8 @@ class SlackTestCommand extends Command
 
     public function handle(): void
     {
-        $slack = app(SlackController::class);
+        $slackController = app(SlackController::class);
 
-        $slack->sendMessageToSlack("This is a test exception message from SlackTestCommand.", "This is a test AI analysis message from SlackTestCommand.");
+        $slackController->sendMessageToSlack("This is a test exception message from SlackTestCommand.", "This is a test AI analysis message from SlackTestCommand.");
     }
 }
