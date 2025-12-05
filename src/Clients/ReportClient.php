@@ -5,9 +5,21 @@ namespace LaravelExceptionAnalyzer\Clients;
 use Illuminate\Support\Facades\Auth;
 use LaravelExceptionAnalyzer\Models\ExceptionModel;
 use Throwable;
+use LaravelExceptionAnalyzer\AI\AiClient;
 
+/**
+ * ReportClient
+ *
+ * Coordinates the process of handling an exception by:
+ * 1. Calling the AI service to classify the exception.
+ * 2. (In the future) Persisting the result into the database.
+ *
+ * This class acts as the intermediary between the main analyzer service
+ * and the underlying AI classification logic.
+ */
 class ReportClient
 {
+
     public static function report(Throwable $e): void
     {
         $exception = self::createExceptionArray($e);
@@ -22,6 +34,18 @@ class ReportClient
         ExceptionModel::create(
             $exception
         );
+
+        /** @var AiClient $aiClient */
+        $aiClient = app(AiClient::class);
+
+        $result = $aiClient->classify($exception);
+
+        if ($result !== null) {
+            logger()->info('AI classified exception', [
+                'exception'      => $exception,
+                'classification' => $result->toArray(),
+            ]);
+        }
     }
 
     private static function createExceptionArray(Throwable $exception): array
