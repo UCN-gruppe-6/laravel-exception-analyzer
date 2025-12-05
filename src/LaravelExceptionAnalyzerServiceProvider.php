@@ -3,6 +3,7 @@
 namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -22,7 +23,9 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_exception_analyzer_table')
-            ->hasCommand(LaravelExceptionAnalyzerCommand::class);
+            ->hasCommands(
+                LaravelExceptionAnalyzerCommand::class,
+                SlackTestCommand::class);
     }
 
     public function register(): void
