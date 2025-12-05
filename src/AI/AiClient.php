@@ -25,26 +25,17 @@ class AiClient
      */
     public function classify(array $exceptionData): ?AiClassificationResult
     {
-        // Fetch the AI config block from our package config file
-        $config = config('laravel-exception-analyzer.ai');
-
         /**
-         * 1. Check if AI classification is enabled.
+         * 1. Check if AI classification is enabled and api key
          */
-        if (!($config['enabled'] ?? false)) {
-            return null;
-        }
-
-        /**
-         * 2. Ensure required configuration fields are available.
-         */
-        if (empty($config['api_key'])) {
+        if (!(config('laravel-exception-analyzer.ai.enabled', env('LEA_AI_ENABLED'))) ||
+            !(config('laravel-exception-analyzer.ai.api_key', env('LEA_AI_API_KEY')))) {
             return null;
         }
 
         $payload = ExceptionSanitizer::sanitize($exceptionData);
 
-        $client = Prism::client($config['api_key']);
+        $client = Prism::client(config('laravel-exception-analyzer.ai.api_key', env('LEA_AI_API_KEY')));
 
         $schema = new ObjectSchema(
             name: 'exception_classification',
