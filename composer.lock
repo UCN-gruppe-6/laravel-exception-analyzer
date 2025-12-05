@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6527621188dfb18451cce6eeb970cbfb",
+    "content-hash": "457018c4c1e3df82a6e04b470d27ccee",
     "packages": [
         {
             "name": "150657373-nikolajve/laravel-exception-analyzer",
-            "version": "dev-nva/start-exception-database-and-saving",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "/home/niko/Work/laravel-exception-analyzer",
-                "reference": "b245b4353276c0a5899385644eb1f68f8b4b367a"
+                "url": "C:/Datamatiker/phpStorm/Laravel-exception-analyzer-final",
+                "reference": "1982295dc1c84bef1a37d326aa57c5b3b659fd79"
             },
             "require": {
                 "illuminate/contracts": "^11.0||^12.0",
@@ -9173,12 +9173,14 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "150657373-nikolajve/laravel-exception-analyzer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
