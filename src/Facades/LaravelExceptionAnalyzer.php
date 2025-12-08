@@ -1,13 +1,13 @@
 <?php
 
-namespace NikolajVE\LaravelExceptionAnalyzer\Facades;
+namespace LaravelExceptionAnalyzer\Facades;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Facade;
 use LaravelExceptionAnalyzer\Clients\ReportClient;
 
 /**
- * @see LaravelExceptionAnalyzer
+ * @see use LaravelExceptionAnalyzer\LaravelExceptionAnalyzer;
  */
 class LaravelExceptionAnalyzer extends Facade
 {
