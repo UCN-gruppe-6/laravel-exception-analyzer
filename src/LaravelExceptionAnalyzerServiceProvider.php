@@ -3,13 +3,13 @@
 namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
+use LaravelExceptionAnalyzer\Clients\ReportClient;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
+use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
 use LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
-use NikolajVE\LaravelExceptionAnalyzer\Clients\ReportClient;
 use LaravelExceptionAnalyzer\AI\AiClient;
 
 /**

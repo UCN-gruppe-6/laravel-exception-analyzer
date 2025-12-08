@@ -1,8 +1,8 @@
 <?php
 
-namespace NikolajVE\LaravelExceptionAnalyzer;
+namespace LaravelExceptionAnalyzer;
 
-use NikolajVE\LaravelExceptionAnalyzer\Clients\ReportClient;
+use LaravelExceptionAnalyzer\Clients\ReportClient;
 use Throwable;
 class LaravelExceptionAnalyzer {
     public function __construct(
