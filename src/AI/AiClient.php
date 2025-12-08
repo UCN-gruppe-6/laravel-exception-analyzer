@@ -50,12 +50,14 @@ class AiClient
         );
 
         $prompt = "
-            You are an exception classification engine.
-            Classify the following exception into:
-            - category
-            - source
-            - severity
-            - status_message
+        You are an exception classification engine.
+        Return exactly one JSON object matching the schema below and nothing else. Do not include any explanation, text, code fences or extra fields.
+
+        Classify the following exception into:
+        - category
+        - source
+        - severity
+        - status_message
 
             Exception:
             " . json_encode($payload, JSON_PRETTY_PRINT);

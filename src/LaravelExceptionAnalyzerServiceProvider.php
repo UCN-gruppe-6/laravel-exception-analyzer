@@ -6,6 +6,7 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 use LaravelExceptionAnalyzer\Clients\ReportClient;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
+use NikolajVE\LaravelExceptionAnalyzer\Commands\AIClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
