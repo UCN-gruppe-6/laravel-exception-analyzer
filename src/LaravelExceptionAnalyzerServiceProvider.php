@@ -80,7 +80,8 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             ->hasMigration('create_exception_analyzer_table')
             ->hasCommands(
                 LaravelExceptionAnalyzerCommand::class,
-                SlackTestCommand::class);
+                SlackTestCommand::class,
+                AIClientCommand::class);
     }
 
     public function register(): void
