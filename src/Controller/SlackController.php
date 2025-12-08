@@ -2,7 +2,6 @@
 
 namespace LaravelExceptionAnalyzer\Controller;
 
-use Illuminate\Support\Facades\Http;
 use LaravelExceptionAnalyzer\Clients\SlackClient;
 
 class SlackController
