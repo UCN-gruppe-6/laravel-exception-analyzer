@@ -3,9 +3,11 @@
 
 namespace LaravelExceptionAnalyzer\AI;
 
+use Illuminate\Support\Facades\Log;
 use LaravelExceptionAnalyzer\AI\AiClassificationResult;
 use LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
 use Prism\Prism\Facades\Prism;
+use Prism\Prism\Enums\Provider;
 use Prism\Prism\Schema\ObjectSchema;
 use Prism\Prism\Schema\StringSchema;
 
@@ -29,13 +31,11 @@ class AiClient
          * 1. Check if AI classification is enabled and api key
          */
         if (!(config('laravel-exception-analyzer.ai.enabled', env('LEA_AI_ENABLED'))) ||
-            !(config('laravel-exception-analyzer.ai.api_key', env('LEA_AI_API_KEY')))) {
+            !(config('laravel-exception-analyzer.ai.apiKey', env('LEA_AI_API_KEY')))) {
             return null;
         }
 
         $payload = ExceptionSanitizer::sanitize($exceptionData);
-
-        $client = Prism::client(config('laravel-exception-analyzer.ai.api_key', env('LEA_AI_API_KEY')));
 
         $schema = new ObjectSchema(
             name: 'exception_classification',
@@ -50,26 +50,28 @@ class AiClient
         );
 
         $prompt = "
-            You are an exception classification engine.
-            Classify the following exception into:
-            - category
-            - source
-            - severity
-            - status_message
+        You are an exception classification engine.
+        Return exactly one JSON object matching the schema below and nothing else. Do not include any explanation, text, code fences or extra fields.
+
+        Classify the following exception into:
+        - category
+        - source
+        - severity
+        - status_message
 
             Exception:
             " . json_encode($payload, JSON_PRETTY_PRINT);
 
-        $response = $client->structured()
-            ->schema($schema)
-            ->prompt($prompt)
-            ->generate();
 
-        if (!$response->valid()) {
-            return null;
-        }
+            $response = Prism::structured()
+                ->using(Provider::Gemini, 'gemini-2.5-flash')
+                ->withSchema($schema)
+                ->withPrompt($prompt)
+                ->asStructured();
 
-        $data = $response->output();
+        Log::info(json_encode($response->structured));
+
+        $data = $response->structured;
 
         return AiClassificationResult::fromArray(is_array($data) ? $data : []);
 

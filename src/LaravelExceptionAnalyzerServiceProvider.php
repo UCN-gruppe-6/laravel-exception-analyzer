@@ -6,6 +6,7 @@ use Illuminate\Contracts\Debug\ExceptionHandler;
 use LaravelExceptionAnalyzer\Clients\ReportClient;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
+use LaravelExceptionAnalyzer\Commands\AIClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
@@ -39,31 +40,31 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
         /**
          * 2. Register the AiClient.
          */
-        $this->app->singleton(AiClient::class, function ($app) {
-            return new AiClient(
-                sanitizer: $app[ExceptionSanitizer::class],
-            );
-        });
+//        $this->app->singleton(AiClient::class, function ($app) {
+//            return new AiClient(
+//                sanitizer: $app[ExceptionSanitizer::class],
+//            );
+//        });
 
 
         /**
          * 3. Register the ReportClient.
          */
-        $this->app->singleton(ReportClient::class, function ($app) {
-            return new ReportClient(
-                aiClient: $app->make(AiClient::class),
-            );
-        });
+//        $this->app->singleton(ReportClient::class, function ($app) {
+//            return new ReportClient(
+//                aiClient: $app->make(AiClient::class),
+//            );
+//        });
 
 
         /**
          * 4. Register the main analyzer service.
          */
-        $this->app->singleton(LaravelExceptionAnalyzer::class, function ($app) {
-            return new LaravelExceptionAnalyzer(
-                reportClient: $app->make(ReportClient::class),
-            );
-        });
+//        $this->app->singleton(LaravelExceptionAnalyzer::class, function ($app) {
+//            return new LaravelExceptionAnalyzer(
+//                reportClient: $app->make(ReportClient::class),
+//            );
+//        });
     }
     public function configurePackage(Package $package): void
     {
@@ -79,7 +80,8 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             ->hasMigration('create_exception_analyzer_table')
             ->hasCommands(
                 LaravelExceptionAnalyzerCommand::class,
-                SlackTestCommand::class);
+                SlackTestCommand::class,
+                AIClientCommand::class);
     }
 
     public function register(): void
@@ -90,6 +92,11 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/../config/laravel-exception-analyzer.php',
             'laravel-exception-analyzer'
+        );
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/prism.php',
+            'prism'
         );
     }
 
