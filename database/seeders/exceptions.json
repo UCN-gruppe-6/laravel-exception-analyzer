@@ -1,0 +1,2283 @@
+[
+    {
+    "message": "Package Number Not Found",
+    "type": "App\\Exceptions\\Carrier\\CarrierException",
+    "code": 404,
+    "file": "/var/www/html/app/Models/Carriers/DFM/Modules/ShipmentModule.php",
+    "line": 414,
+    "url": "https://core.coolrunner.dk/wms/labels/T-0001646934/90773405009100001401AZ531559/pdf",
+    "hostname": "fpm-core-depl-5cd8697b5f-jcvwg",
+    "stacktrace": [
+        {
+            "file": "/var/www/html/app/Models/Abstracts/Carrier.php",
+            "line": 300,
+            "function": "getLabel",
+            "class": "App\\Models\\Carriers\\DFM\\Modules\\ShipmentModule",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Models/Sales/ShippingLabel.php",
+            "line": 943,
+            "function": "getShippingLabel",
+            "class": "App\\Models\\Abstracts\\Carrier",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Models/Sales/ShippingLabel.php",
+            "line": 3154,
+            "function": "getLabel",
+            "class": "App\\Models\\Sales\\ShippingLabel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Controllers/WMS/LabelController.php",
+            "line": 318,
+            "function": "getPdf",
+            "class": "App\\Models\\Sales\\ShippingLabel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getLabel",
+            "class": "App\\Http\\Controllers\\WMS\\LabelController",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 262,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 205,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 721,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Input/InputLogger.php",
+            "line": 55,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Http/Middleware/InputLogger.php",
+            "line": 30,
+            "function": "wrap",
+            "class": "CoolRunner\\Utils\\Input\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "CoolRunner\\Utils\\Http\\Middleware\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/CustomerBasicAuthentication.php",
+            "line": 29,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\CustomerBasicAuthentication",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 723,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 698,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 662,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 651,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AddHeaderAccessToken.php",
+            "line": 22,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AddHeaderAccessToken",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/SetLocale.php",
+            "line": 31,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\SetLocale",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AuthenticateIPAddress.php",
+            "line": 37,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AuthenticateIPAddress",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/JsonOnlyMiddleware.php",
+            "line": 13,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\JsonOnlyMiddleware",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+            "line": 52,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fruitcake\\Cors\\HandleCors",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fideloper/proxy/src/TrustProxies.php",
+            "line": 57,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fideloper\\Proxy\\TrustProxies",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        }
+    ]
+
+    },
+    {
+        "message": "cURL error 28: Failed to connect to api.bring.com port 443: Connection timed out (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://api.bring.com/pickuppoint/api/pickuppoint/DK/postalCode/4700.json?street=Ringstedgade%2024,%201.%20th&numberOfResponses=3&pickupPointType=manned",
+        "type": "GuzzleHttp\\Exception\\ConnectException",
+        "code": 0,
+        "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php",
+        "line": 210,
+        "url": "https://core.coolrunner.dk/public/servicepoints/bring",
+        "hostname": "fpm-core-depl-55485d786b-gt4cr",
+        "stacktrace": [
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php",
+                "line": 158,
+                "function": "createRejection",
+                "class": "GuzzleHttp\\Handler\\CurlFactory",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php",
+                "line": 110,
+                "function": "finishError",
+                "class": "GuzzleHttp\\Handler\\CurlFactory",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlHandler.php",
+                "line": 47,
+                "function": "finish",
+                "class": "GuzzleHttp\\Handler\\CurlFactory",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/Proxy.php",
+                "line": 28,
+                "function": "__invoke",
+                "class": "GuzzleHttp\\Handler\\CurlHandler",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/Proxy.php",
+                "line": 48,
+                "function": "GuzzleHttp\\Handler\\{closure}",
+                "class": "GuzzleHttp\\Handler\\Proxy",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/Middleware.php",
+                "line": 30,
+                "function": "GuzzleHttp\\Handler\\{closure}",
+                "class": "GuzzleHttp\\Handler\\Proxy",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/Middleware.php",
+                "line": 30,
+                "function": "CoolRunner\\Utils\\Guzzle\\Middlewares\\{closure}",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\Middleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/Middleware.php",
+                "line": 30,
+                "function": "CoolRunner\\Utils\\Guzzle\\Middlewares\\{closure}",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\Middleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/Middleware.php",
+                "line": 30,
+                "function": "CoolRunner\\Utils\\Guzzle\\Middlewares\\{closure}",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\Middleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php",
+                "line": 35,
+                "function": "CoolRunner\\Utils\\Guzzle\\Middlewares\\{closure}",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\Middleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Middleware.php",
+                "line": 31,
+                "function": "__invoke",
+                "class": "GuzzleHttp\\PrepareBodyMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/RedirectMiddleware.php",
+                "line": 71,
+                "function": "GuzzleHttp\\{closure}",
+                "class": "GuzzleHttp\\Middleware",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Middleware.php",
+                "line": 63,
+                "function": "__invoke",
+                "class": "GuzzleHttp\\RedirectMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/HandlerStack.php",
+                "line": 75,
+                "function": "GuzzleHttp\\{closure}",
+                "class": "GuzzleHttp\\Middleware",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Client.php",
+                "line": 331,
+                "function": "__invoke",
+                "class": "GuzzleHttp\\HandlerStack",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Client.php",
+                "line": 168,
+                "function": "transfer",
+                "class": "GuzzleHttp\\Client",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Client.php",
+                "line": 187,
+                "function": "requestAsync",
+                "class": "GuzzleHttp\\Client",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/ClientTrait.php",
+                "line": 44,
+                "function": "request",
+                "class": "GuzzleHttp\\Client",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Carriers/Bring/Client/ServicePointClient.php",
+                "line": 171,
+                "function": "get",
+                "class": "GuzzleHttp\\Client",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Carriers/Bring/Client/ServicePointClient.php",
+                "line": 133,
+                "function": "get",
+                "class": "App\\Models\\Carriers\\Bring\\Client\\ServicePointClient",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Carriers/Bring/Client/ServicePointClient.php",
+                "line": 222,
+                "function": "getByAddress",
+                "class": "App\\Models\\Carriers\\Bring\\Client\\ServicePointClient",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Carriers/Bring/Modules/ServicePointModule.php",
+                "line": 56,
+                "function": "findNearest",
+                "class": "App\\Models\\Carriers\\Bring\\Client\\ServicePointClient",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Abstracts/Carrier.php",
+                "line": 326,
+                "function": "getServicepoints",
+                "class": "App\\Models\\Carriers\\Bring\\Modules\\ServicePointModule",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Controllers/API/ServicepointController.php",
+                "line": 91,
+                "function": "getServicepoints",
+                "class": "App\\Models\\Abstracts\\Carrier",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+                "line": 54,
+                "function": "getServicepoints",
+                "class": "App\\Http\\Controllers\\API\\ServicepointController",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+                "line": 45,
+                "function": "callAction",
+                "class": "Illuminate\\Routing\\Controller",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                "line": 262,
+                "function": "dispatch",
+                "class": "Illuminate\\Routing\\ControllerDispatcher",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                "line": 205,
+                "function": "runController",
+                "class": "Illuminate\\Routing\\Route",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 721,
+                "function": "run",
+                "class": "Illuminate\\Routing\\Route",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 128,
+                "function": "Illuminate\\Routing\\{closure}",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Input/InputLogger.php",
+                "line": 55,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Http/Middleware/InputLogger.php",
+                "line": 30,
+                "function": "wrap",
+                "class": "CoolRunner\\Utils\\Input\\InputLogger",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "CoolRunner\\Utils\\Http\\Middleware\\InputLogger",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/CustomerAuthentication.php",
+                "line": 69,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\CustomerAuthentication",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 103,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 723,
+                "function": "then",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 698,
+                "function": "runRouteWithinStack",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 662,
+                "function": "runRoute",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 651,
+                "function": "dispatchToRoute",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 167,
+                "function": "dispatch",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 128,
+                "function": "Illuminate\\Foundation\\Http\\{closure}",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/AddHeaderAccessToken.php",
+                "line": 22,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\AddHeaderAccessToken",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/SetLocale.php",
+                "line": 31,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\SetLocale",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/AuthenticateIPAddress.php",
+                "line": 37,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\AuthenticateIPAddress",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/JsonOnlyMiddleware.php",
+                "line": 13,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\JsonOnlyMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+                "line": 52,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Fruitcake\\Cors\\HandleCors",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/fideloper/proxy/src/TrustProxies.php",
+                "line": 57,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Fideloper\\Proxy\\TrustProxies",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                "line": 21,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+                "line": 31,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                "line": 21,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+                "line": 40,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+                "line": 27,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+                "line": 86,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 103,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 142,
+                "function": "then",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 111,
+                "function": "sendRequestThroughRouter",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/public/index.php",
+                "line": 52,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            }
+        ]
+    },
+    {
+        "message": "Server error: `GET https://dawa.aws.dk/adresser?q=K%C3%A6rsangervej%2056,%208800%20Viborg` resulted in a `500 Internal Server Error` response:\n{\n  \"type\": \"InternalServerError\",\n  \"title\": \"Something unexpected happened inside the server.\"\n}\n",
+        "type": "GuzzleHttp\\Exception\\ServerException",
+        "code": 500,
+        "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php",
+        "line": 113,
+        "url": "https://core.coolrunner.dk/app/services/geolocation/geo?city=Viborg&country_code=DK&street=K%C3%A6rsangervej%2056&zip_code=8800",
+        "hostname": "fpm-core-depl-5ddcc769cd-qb8fz",
+        "stacktrace": [
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Middleware.php",
+                "line": 69,
+                "function": "create",
+                "class": "GuzzleHttp\\Exception\\RequestException",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 204,
+                "function": "GuzzleHttp\\{closure}",
+                "class": "GuzzleHttp\\Middleware",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 153,
+                "function": "callHandler",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/TaskQueue.php",
+                "line": 48,
+                "function": "GuzzleHttp\\Promise\\{closure}",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 248,
+                "function": "run",
+                "class": "GuzzleHttp\\Promise\\TaskQueue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 224,
+                "function": "invokeWaitFn",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 269,
+                "function": "waitIfPending",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 226,
+                "function": "invokeWaitList",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 62,
+                "function": "waitIfPending",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/aws/aws-sdk-php/src/AwsClientTrait.php",
+                "line": 58,
+                "function": "wait",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/aws/aws-sdk-php/src/AwsClientTrait.php",
+                "line": 86,
+                "function": "execute",
+                "class": "Aws\\AwsClient",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Queue/SqsQueue.php",
+                "line": 114,
+                "function": "__call",
+                "class": "Aws\\AwsClient",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Queue/SqsQueue.php",
+                "line": 98,
+                "function": "pushRaw",
+                "class": "Illuminate\\Queue\\SqsQueue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Queue/Queue.php",
+                "line": 317,
+                "function": "Illuminate\\Queue\\{closure}",
+                "class": "Illuminate\\Queue\\SqsQueue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Queue/SqsQueue.php",
+                "line": 99,
+                "function": "enqueueUsing",
+                "class": "Illuminate\\Queue\\Queue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Queue/Queue.php",
+                "line": 57,
+                "function": "push",
+                "class": "Illuminate\\Queue\\SqsQueue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php",
+                "line": 246,
+                "function": "pushOn",
+                "class": "Illuminate\\Queue\\Queue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php",
+                "line": 229,
+                "function": "pushCommandToQueue",
+                "class": "Illuminate\\Bus\\Dispatcher",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php",
+                "line": 77,
+                "function": "dispatchToQueue",
+                "class": "Illuminate\\Bus\\Dispatcher",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bus/PendingDispatch.php",
+                "line": 193,
+                "function": "dispatch",
+                "class": "Illuminate\\Bus\\Dispatcher",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
+                "line": 389,
+                "function": "__destruct",
+                "class": "Illuminate\\Foundation\\Bus\\PendingDispatch",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Traits/Models/SavesModelAsync.php",
+                "line": 30,
+                "function": "dispatch"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/LoggingMiddleware.php",
+                "line": 170,
+                "function": "save",
+                "class": "CoolRunner\\Utils\\Models\\Logging\\ClientLog",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/LoggingMiddleware.php",
+                "line": 137,
+                "function": "endClientLog",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\LoggingMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Guzzle/Middlewares/LoggingMiddleware.php",
+                "line": 84,
+                "function": "end",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\LoggingMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/FulfilledPromise.php",
+                "line": 41,
+                "function": "CoolRunner\\Utils\\Guzzle\\Middlewares\\{closure}",
+                "class": "CoolRunner\\Utils\\Guzzle\\Middlewares\\LoggingMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/TaskQueue.php",
+                "line": 48,
+                "function": "GuzzleHttp\\Promise\\{closure}",
+                "class": "GuzzleHttp\\Promise\\FulfilledPromise",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 248,
+                "function": "run",
+                "class": "GuzzleHttp\\Promise\\TaskQueue",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 224,
+                "function": "invokeWaitFn",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 269,
+                "function": "waitIfPending",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 226,
+                "function": "invokeWaitList",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/promises/src/Promise.php",
+                "line": 62,
+                "function": "waitIfPending",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/guzzlehttp/guzzle/src/Client.php",
+                "line": 187,
+                "function": "wait",
+                "class": "GuzzleHttp\\Promise\\Promise",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Geolocation/DawaGeo.php",
+                "line": 664,
+                "function": "request",
+                "class": "GuzzleHttp\\Client",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Models/Geolocation/DawaGeo.php",
+                "line": 115,
+                "function": "get",
+                "class": "App\\Models\\Geolocation\\DawaGeo",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/app/Models/Geolocation/Geocode.php",
+                "line": 145,
+                "function": "lookup",
+                "class": "App\\Models\\Geolocation\\DawaGeo",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/app/Http/Controllers/API/GeolocationController.php",
+                "line": 56,
+                "function": "lookup",
+                "class": "App\\Models\\Geolocation\\Geocode",
+                "type": "::"
+            },
+            {
+                "file": "/var/www/html/app/Http/Controllers/App/GeolocationController.php",
+                "line": 25,
+                "function": "search",
+                "class": "App\\Http\\Controllers\\API\\GeolocationController",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+                "line": 54,
+                "function": "search",
+                "class": "App\\Http\\Controllers\\App\\GeolocationController",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+                "line": 45,
+                "function": "callAction",
+                "class": "Illuminate\\Routing\\Controller",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                "line": 262,
+                "function": "dispatch",
+                "class": "Illuminate\\Routing\\ControllerDispatcher",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                "line": 205,
+                "function": "runController",
+                "class": "Illuminate\\Routing\\Route",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 721,
+                "function": "run",
+                "class": "Illuminate\\Routing\\Route",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 128,
+                "function": "Illuminate\\Routing\\{closure}",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/App/JWTGuard.php",
+                "line": 60,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\App\\JWTGuard",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Input/InputLogger.php",
+                "line": 55,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/coolrunner/utils/src/Http/Middleware/InputLogger.php",
+                "line": 30,
+                "function": "wrap",
+                "class": "CoolRunner\\Utils\\Input\\InputLogger",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "CoolRunner\\Utils\\Http\\Middleware\\InputLogger",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 103,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 723,
+                "function": "then",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 698,
+                "function": "runRouteWithinStack",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 662,
+                "function": "runRoute",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                "line": 651,
+                "function": "dispatchToRoute",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 167,
+                "function": "dispatch",
+                "class": "Illuminate\\Routing\\Router",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 128,
+                "function": "Illuminate\\Foundation\\Http\\{closure}",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/AddHeaderAccessToken.php",
+                "line": 22,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\AddHeaderAccessToken",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/SetLocale.php",
+                "line": 31,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\SetLocale",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/AuthenticateIPAddress.php",
+                "line": 37,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\AuthenticateIPAddress",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/app/Http/Middleware/JsonOnlyMiddleware.php",
+                "line": 13,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "App\\Http\\Middleware\\JsonOnlyMiddleware",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+                "line": 52,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Fruitcake\\Cors\\HandleCors",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/fideloper/proxy/src/TrustProxies.php",
+                "line": 57,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Fideloper\\Proxy\\TrustProxies",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                "line": 21,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+                "line": 31,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                "line": 21,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+                "line": 40,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+                "line": 27,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+                "line": 86,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 167,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                "line": 103,
+                "function": "Illuminate\\Pipeline\\{closure}",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 142,
+                "function": "then",
+                "class": "Illuminate\\Pipeline\\Pipeline",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                "line": 111,
+                "function": "sendRequestThroughRouter",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/var/www/html/public/index.php",
+                "line": 52,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Http\\Kernel",
+                "type": "-\u003E"
+            }
+        ]
+    },
+    {
+        "message": "syntax error, unexpected token \"}\", expecting \";\"",
+        "type": "ParseError",
+        "code": 0,
+        "file": "/Users/lassehaslund/Work/core/app/Console/Commands/TestCommand.php",
+        "line": 62,
+        "url": "https://core.coolrunner.dk/",
+        "hostname": "lassehass-macbook.local",
+        "stacktrace": [
+            {
+                "file": "/Users/lassehaslund/Work/core/vendor/composer/ClassLoader.php",
+                "line": 427,
+                "function": "{closure:Composer\\Autoload\\ClassLoader::initializeIncludeClosure():575}"
+            },
+            {
+                "function": "loadClass",
+                "class": "Composer\\Autoload\\ClassLoader",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/Users/lassehaslund/Work/core/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
+                "line": 229,
+                "function": "is_subclass_of"
+            },
+            {
+                "file": "/Users/lassehaslund/Work/core/app/Console/Kernel.php",
+                "line": 416,
+                "function": "load",
+                "class": "Illuminate\\Foundation\\Console\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/Users/lassehaslund/Work/core/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
+                "line": 316,
+                "function": "commands",
+                "class": "App\\Console\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "/Users/lassehaslund/Work/core/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
+                "line": 127,
+                "function": "bootstrap",
+                "class": "Illuminate\\Foundation\\Console\\Kernel",
+                "type": "-\u003E"
+            },
+            {
+                "file": "Command line code",
+                "line": 1,
+                "function": "handle",
+                "class": "Illuminate\\Foundation\\Console\\Kernel",
+                "type": "-\u003E"
+            }
+        ]
+    },{
+    "message": "Carrier Down",
+    "type": "App\\Exceptions\\Carrier\\CarrierException",
+    "code": 500,
+    "file": "/home/runcloud/webapps/processor/app/Models/Carriers/Bring/Client/PushTrackingClient.php",
+    "line": 137,
+    "url": "https://core.coolrunner.dk/",
+    "hostname": "ip-172-31-30-116",
+    "stacktrace": [
+        {
+            "file": "/home/runcloud/webapps/processor/app/Models/Carriers/Bring/Client/PushTrackingClient.php",
+            "line": 94,
+            "function": "request",
+            "class": "App\\Models\\Carriers\\Bring\\Client\\PushTrackingClient",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/app/Models/Carriers/Bring/Client/PushTrackingClient.php",
+            "line": 81,
+            "function": "post",
+            "class": "App\\Models\\Carriers\\Bring\\Client\\PushTrackingClient",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/app/Console/Commands/BringPushtracking.php",
+            "line": 72,
+            "function": "batchRegister",
+            "class": "App\\Models\\Carriers\\Bring\\Client\\PushTrackingClient",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+            "line": 36,
+            "function": "handle",
+            "class": "App\\Console\\Commands\\BringPushtracking",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Container/Util.php",
+            "line": 40,
+            "function": "Illuminate\\Container\\{closure}",
+            "class": "Illuminate\\Container\\BoundMethod",
+            "type": "::"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+            "line": 93,
+            "function": "unwrapIfClosure",
+            "class": "Illuminate\\Container\\Util",
+            "type": "::"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+            "line": 37,
+            "function": "callBoundMethod",
+            "class": "Illuminate\\Container\\BoundMethod",
+            "type": "::"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+            "line": 653,
+            "function": "call",
+            "class": "Illuminate\\Container\\BoundMethod",
+            "type": "::"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Console/Command.php",
+            "line": 136,
+            "function": "call",
+            "class": "Illuminate\\Container\\Container",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/symfony/console/Command/Command.php",
+            "line": 298,
+            "function": "execute",
+            "class": "Illuminate\\Console\\Command",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Console/Command.php",
+            "line": 121,
+            "function": "run",
+            "class": "Symfony\\Component\\Console\\Command\\Command",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/symfony/console/Application.php",
+            "line": 1040,
+            "function": "run",
+            "class": "Illuminate\\Console\\Command",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/symfony/console/Application.php",
+            "line": 301,
+            "function": "doRunCommand",
+            "class": "Symfony\\Component\\Console\\Application",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/symfony/console/Application.php",
+            "line": 171,
+            "function": "doRun",
+            "class": "Symfony\\Component\\Console\\Application",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Console/Application.php",
+            "line": 94,
+            "function": "run",
+            "class": "Symfony\\Component\\Console\\Application",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
+            "line": 129,
+            "function": "run",
+            "class": "Illuminate\\Console\\Application",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/home/runcloud/webapps/processor/artisan",
+            "line": 37,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Console\\Kernel",
+            "type": "-\u003E"
+        }
+    ]
+},{
+    "message": "Carrier Down",
+    "type": "App\\Exceptions\\Carrier\\CarrierException",
+    "code": 500,
+    "file": "/var/www/html/app/Models/Carriers/Packeta/Client/PacketaSoapClient.php",
+    "line": 48,
+    "url": "https://core.coolrunner.dk/public/servicepoints/packeta",
+    "hostname": "fpm-core-depl-5cd8697b5f-t9qc7",
+    "stacktrace": [
+        {
+            "file": "/var/www/html/app/Models/Carriers/Packeta/Packeta.php",
+            "line": 93,
+            "function": "__construct",
+            "class": "App\\Models\\Carriers\\Packeta\\Client\\PacketaSoapClient",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Controllers/API/ServicepointController.php",
+            "line": 40,
+            "function": "__construct",
+            "class": "App\\Models\\Carriers\\Packeta\\Packeta",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "getServicepoints",
+            "class": "App\\Http\\Controllers\\API\\ServicepointController",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 262,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 205,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 721,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Input/InputLogger.php",
+            "line": 55,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Http/Middleware/InputLogger.php",
+            "line": 30,
+            "function": "wrap",
+            "class": "CoolRunner\\Utils\\Input\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "CoolRunner\\Utils\\Http\\Middleware\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/CustomerAuthentication.php",
+            "line": 69,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\CustomerAuthentication",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 723,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 698,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 662,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 651,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AddHeaderAccessToken.php",
+            "line": 22,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AddHeaderAccessToken",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/SetLocale.php",
+            "line": 31,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\SetLocale",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AuthenticateIPAddress.php",
+            "line": 37,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AuthenticateIPAddress",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/JsonOnlyMiddleware.php",
+            "line": 13,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\JsonOnlyMiddleware",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+            "line": 52,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fruitcake\\Cors\\HandleCors",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fideloper/proxy/src/TrustProxies.php",
+            "line": 57,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fideloper\\Proxy\\TrustProxies",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        }
+    ]
+},{
+    "message": "Cannot associate alt package numbers to an unsaved ShippingLabel",
+    "type": "Exception",
+    "code": 0,
+    "file": "/var/www/html/app/Models/Sales/ShippingLabel.php",
+    "line": 883,
+    "url": "https://core.coolrunner.dk/sales/order/free",
+    "hostname": "fpm-core-depl-648fcdd486-qk7bk",
+    "stacktrace": [
+        {
+            "file": "/var/www/html/app/Models/Carriers/GLS/Client/API/ApiClient.php",
+            "line": 62,
+            "function": "setAltPackageNumberAttribute",
+            "class": "App\\Models\\Sales\\ShippingLabel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Models/Carriers/GLS/Modules/ShipmentModule.php",
+            "line": 123,
+            "function": "createShipment",
+            "class": "App\\Models\\Carriers\\GLS\\Client\\API\\ApiClient",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Models/Sales/ShippingLabel.php",
+            "line": 1406,
+            "function": "createShipment",
+            "class": "App\\Models\\Carriers\\GLS\\Modules\\ShipmentModule",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Controllers/Sales/SalesOrderController.php",
+            "line": 441,
+            "function": "process",
+            "class": "App\\Models\\Sales\\ShippingLabel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+            "line": 54,
+            "function": "createFreeOrder",
+            "class": "App\\Http\\Controllers\\Sales\\SalesOrderController",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+            "line": 45,
+            "function": "callAction",
+            "class": "Illuminate\\Routing\\Controller",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 262,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\ControllerDispatcher",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+            "line": 205,
+            "function": "runController",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 721,
+            "function": "run",
+            "class": "Illuminate\\Routing\\Route",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Routing\\{closure}",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/CustomerBasicAuthentication.php",
+            "line": 29,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\CustomerBasicAuthentication",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Input/InputLogger.php",
+            "line": 55,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/coolrunner/utils/src/Http/Middleware/InputLogger.php",
+            "line": 30,
+            "function": "wrap",
+            "class": "CoolRunner\\Utils\\Input\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "CoolRunner\\Utils\\Http\\Middleware\\InputLogger",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 723,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 698,
+            "function": "runRouteWithinStack",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 662,
+            "function": "runRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+            "line": 651,
+            "function": "dispatchToRoute",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 167,
+            "function": "dispatch",
+            "class": "Illuminate\\Routing\\Router",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 128,
+            "function": "Illuminate\\Foundation\\Http\\{closure}",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AddHeaderAccessToken.php",
+            "line": 22,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AddHeaderAccessToken",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/SetLocale.php",
+            "line": 31,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\SetLocale",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/AuthenticateIPAddress.php",
+            "line": 37,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\AuthenticateIPAddress",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/app/Http/Middleware/JsonOnlyMiddleware.php",
+            "line": 13,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "App\\Http\\Middleware\\JsonOnlyMiddleware",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+            "line": 52,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fruitcake\\Cors\\HandleCors",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/fideloper/proxy/src/TrustProxies.php",
+            "line": 57,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Fideloper\\Proxy\\TrustProxies",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+            "line": 31,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+            "line": 21,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+            "line": 40,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+            "line": 27,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+            "line": 86,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 167,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+            "line": 103,
+            "function": "Illuminate\\Pipeline\\{closure}",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 142,
+            "function": "then",
+            "class": "Illuminate\\Pipeline\\Pipeline",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+            "line": 111,
+            "function": "sendRequestThroughRouter",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        },
+        {
+            "file": "/var/www/html/public/index.php",
+            "line": 52,
+            "function": "handle",
+            "class": "Illuminate\\Foundation\\Http\\Kernel",
+            "type": "-\u003E"
+        }
+    ]
+}
+
+
+]
