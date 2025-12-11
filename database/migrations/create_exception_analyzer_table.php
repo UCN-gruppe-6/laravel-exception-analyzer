@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('exceptions', function (Blueprint $table) {
             $table->id();
-            $table->string('message')->comment('Error message of the exception');
+            $table->text('message')->comment('Error message of the exception');
             $table->string('type')->comment('Type of exception, e.g., ErrorException, ModelNotFoundException');
             $table->string('code')->comment('Error code associated with the exception');
             $table->string('file')->comment('File where the exception occurred');
