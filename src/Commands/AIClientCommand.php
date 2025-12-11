@@ -6,17 +6,18 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use LaravelExceptionAnalyzer\AI\AiClient;
 use LaravelExceptionAnalyzer\Models\ExceptionModel;
+use LaravelExceptionAnalyzer\Models\StructuredExceptionModel;
 
 class AIClientCommand extends Command
 {
-    protected $signature = 'send:gemini';
+    protected $signature = 'send:AI';
     protected $description = 'Send an exception payload to Gemini and print the response';
 
     public function handle(): void
     {
 //        $msg = $this->argument('message') ?: 'Simulated exception for testing Gemini integration';
 //
-//        try {
+//        try {1
 //            // simulate throwing to get realistic stack trace
 //            throw new \Exception($msg);
 //        } catch (Throwable $e) {
@@ -53,11 +54,12 @@ class AIClientCommand extends Command
 //            $this->line($response->body());
 //            return 2;
 
-        $exception = ExceptionModel::where('id', 1)->limit(1)->get();
+        $exception = ExceptionModel::where('id', 5)->get();
 
         $aiClient = app(AiClient::class);
 
         $response = $aiClient->classify($exception->first()->toArray());
 
+        StructuredExceptionModel::create($response);
     }
 }
