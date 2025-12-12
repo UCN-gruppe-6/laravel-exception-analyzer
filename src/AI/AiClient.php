@@ -26,12 +26,12 @@ use Prism\Prism\Schema\StringSchema;
  */
 class AiClient
 {
-    private static function castFromResponse(array $response): array
+    private static function createCflFromResponse(array $response): array
     {
         $data = $response;
-        $data['exception_id'] = isset($response['exception_id']) ? (int)$response['exception_id'] : null;
-        $data['user_id']      = isset($response['user_id']) ? (int)$response['user_id'] : null;
-        $data['is_internal']  = (boolean)$response['is_internal'];
+        if (isset($response['affected_carrier'])) {
+            $data['cfl'] = $response['affected_carrier'] . '-' . $response['file_name'] . '-' . $response['line_number'];
+        }
         return $data;
     }
 
@@ -97,6 +97,6 @@ class AiClient
 
             Log::info('AI Response: ' . json_encode($response->structured, JSON_PRETTY_PRINT));
 
-            return self::castFromResponse($response->structured);
+            return self::createCflFromResponse($response->structured);
     }
 }

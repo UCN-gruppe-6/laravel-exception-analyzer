@@ -20,6 +20,7 @@ class StructuredExceptionModel extends Model
             'code',
             'file_name',
             'line_number',
+            'cfl',
         ];
 
     protected $casts = [

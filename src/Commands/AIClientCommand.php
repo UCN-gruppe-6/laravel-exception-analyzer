@@ -15,13 +15,15 @@ class AIClientCommand extends Command
 
     public function handle(): void
     {
-        $exception = ExceptionModel::select(['id', 'message', 'type', 'code', 'file', 'line', 'url', 'hostname', 'user_id', 'session_id', 'level'])->where('id', 1)->get();
+        $exception = ExceptionModel::select(['id', 'message', 'type', 'code', 'file', 'line', 'url', 'hostname', 'user_id', 'session_id', 'level'])->where('id', 3)->get();
 
         Log::info($exception);
 
         $aiClient = app(AiClient::class);
 
         $response = $aiClient->classify($exception->first()->toArray());
+
+        Log::info(json_encode($response));
 
         StructuredExceptionModel::create($response);
     }
