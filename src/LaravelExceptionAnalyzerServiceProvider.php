@@ -79,7 +79,8 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigrations(
                 'create_exception_analyzer_table',
-                'create_structured_exception_table'
+                'create_structured_exception_table',
+                'add_to_structured_exception_table'
             )
             ->hasCommands(
                 LaravelExceptionAnalyzerCommand::class,

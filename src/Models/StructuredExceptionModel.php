@@ -16,7 +16,11 @@ class StructuredExceptionModel extends Model
             'is_internal',
             'severity',
             'concrete_error_message',
-            'full_readable_error_message'
+            'full_readable_error_message',
+            'code',
+            'file_name',
+            'line_number',
+            'cfl',
         ];
 
     protected $casts = [
