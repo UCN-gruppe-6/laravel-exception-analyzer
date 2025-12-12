@@ -3,6 +3,8 @@
 namespace LaravelExceptionAnalyzer\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
+use LaravelExceptionAnalyzer\Enums\Carrier;
 
 class LaravelExceptionAnalyzerCommand extends Command
 {
