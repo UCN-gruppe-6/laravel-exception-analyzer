@@ -17,6 +17,7 @@ class RepetitiveExceptionModel extends Model
             'occurrence_count',
             'is_internal',
             'severity',
+            'carrier',
         ];
 
     protected $casts = [

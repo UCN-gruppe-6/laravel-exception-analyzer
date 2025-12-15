@@ -13,7 +13,8 @@ class ExceptionAnalyzerController
     {
         $aiClient = app(AiClient::class);
         $data = StructuredExceptionModel::where('created_at', '>',
-            now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5)))->where('repetitive_exception_id', null)
+            now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5)))
+            ->where('repetitive_exception_id', null)
             ->get()
             ->toArray();
         $exceptions = $this->getExceptions($data, 'cfl');
@@ -46,6 +47,7 @@ class ExceptionAnalyzerController
                         'occurrence_count' => $count,
                         'is_internal' => $repetitiveExceptionData['is_internal'],
                         'severity' => $repetitiveExceptionData['severity'],
+                        'carrier' => $repetitiveExceptionData['carrier'],
                     ]);
                 } else {
                     $repetitiveException->increment('occurrence_count', $count);
@@ -79,6 +81,7 @@ class ExceptionAnalyzerController
             $combinedStructuredExceptions['detailed_error_messages'][] = $structuredException['full_readable_error_message'];
             $combinedStructuredExceptions['is_internal'][] = $structuredException['is_internal'];
             $combinedStructuredExceptions['severity'][] = $structuredException['severity'];
+            $combinedStructuredExceptions['carrier'][] = $structuredException['affected_carrier'];
     }
         return $combinedStructuredExceptions;
     }
