@@ -60,6 +60,23 @@ class ExceptionAnalyzerController
         }
     }
 
+    public function resolveRepetitiveExceptions(): void
+    {
+        $activeExceptions = RepetitiveExceptionModel::where('is_solved', false)->get();
+
+        foreach ($activeExceptions as $exception) {
+            $structuredException = StructuredExceptionModel::where('cfl', $exception->cfl)
+                ->where('created_at', '>',
+                    now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5000))
+                )->where('repetitive_exception_id', null)
+                ->first();
+            if (!$structuredException && $exception->updated_at < now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',30))) {
+                $exception->is_solved = true;
+                $exception->save();
+            }
+        }
+    }
+
     private function getExceptions(array $data, string $value): array
     {
         $exceptions = [];

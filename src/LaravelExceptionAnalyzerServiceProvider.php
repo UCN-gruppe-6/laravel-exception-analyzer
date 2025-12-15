@@ -5,6 +5,7 @@ namespace LaravelExceptionAnalyzer;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use LaravelExceptionAnalyzer\Clients\ReportClient;
 use LaravelExceptionAnalyzer\Commands\ExceptionAnalyzerCommand;
+use LaravelExceptionAnalyzer\Commands\ResolveRepetitiveExceptionsCommand;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
 use LaravelExceptionAnalyzer\Commands\AIClientCommand;
@@ -82,7 +83,8 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
                 LaravelExceptionAnalyzerCommand::class,
                 SlackTestCommand::class,
                 AIClientCommand::class,
-                ExceptionAnalyzerCommand::class);
+                ExceptionAnalyzerCommand::class,
+                ResolveRepetitiveExceptionsCommand::class);
     }
 
     public function register(): void
