@@ -110,8 +110,9 @@ class AiClient
                 new StringSchema('short_error_message', 'A concise short error message summarizing the combined errors'),
                 new StringSchema('detailed_error_message', 'A detailed long error message combining all provided error messages'),
                 new EnumSchema('severity', 'Severity level of the exception', Severity::toArray()),
+                new EnumSchema('carrier', 'What carrier is the exception on. If you are unable to find any Carriers matching these, return null', Carrier::toArray()),
             ],
-            requiredFields: ['is_internal', 'short_error_message', 'detailed_error_message', 'severity']
+            requiredFields: ['is_internal', 'short_error_message', 'detailed_error_message', 'severity', 'carrier']
         );
 
         $prompt = "
