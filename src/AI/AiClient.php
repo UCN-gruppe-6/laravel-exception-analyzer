@@ -99,4 +99,42 @@ class AiClient
 
             return self::createCflFromResponse($response->structured);
     }
+
+    public function combineStructuredExceptionsToRepetitiveException(array $messages): array {
+
+        $schema = new ObjectSchema(
+            name: 'exception_classification',
+            description: 'Classification of a Laravel exception',
+            properties: [
+                new BooleanSchema('is_internal', true, false),
+                new StringSchema('short_error_message', 'A concise short error message summarizing the combined errors'),
+                new StringSchema('detailed_error_message', 'A detailed long error message combining all provided error messages'),
+                new EnumSchema('severity', 'Severity level of the exception', Severity::toArray()),
+            ],
+            requiredFields: ['is_internal', 'short_error_message', 'detailed_error_message', 'severity']
+        );
+
+        $prompt = "
+        You are an exception message combiner.
+        Your goal is to combine multiple short and long error messages into one concise short error message and one detailed long error message.
+        You should also determine if the combined error is internal or not. These should be based on the majority of the provided messages.
+        You should also determine the severity of the combined error based on the provided messages. If there is a tie, choose the higher severity.
+        Return exactly one JSON object matching the schema below and nothing else. Do not include any explanation, text, code fences or extra fields.
+        " . json_encode($messages, JSON_PRETTY_PRINT);
+
+
+        $response = Prism::structured()
+            ->using(Provider::Ollama, 'mistral:latest')
+            ->withSchema($schema)
+            ->withPrompt($prompt)
+            ->withClientOptions(
+                [
+                    'timeout' => 6000,
+                ]
+            )
+            ->asStructured();
+
+        return $response->structured;
+    }
+
 }

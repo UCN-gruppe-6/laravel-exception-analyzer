@@ -2,34 +2,85 @@
 
 namespace LaravelExceptionAnalyzer\Controller;
 
+use Illuminate\Support\Facades\Log;
+use LaravelExceptionAnalyzer\AI\AiClient;
+use LaravelExceptionAnalyzer\Models\RepetitiveExceptionModel;
 use LaravelExceptionAnalyzer\Models\StructuredExceptionModel;
 
 class ExceptionAnalyzerController
 {
     public function analyze(): void
     {
-        $data = StructuredExceptionModel::where('created_at', '<',
-            now()->subMinute(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES'),5))->get();
-        $exceptions = $this->getExceptions($data);
-        foreach ($exceptions as $exception) {
+        $aiClient = app(AiClient::class);
+        $data = StructuredExceptionModel::where('created_at', '>',
+            now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5)))->where('repetitive_exception_id', null)
+            ->get()
+            ->toArray();
+        $exceptions = $this->getExceptions($data, 'cfl');
+        foreach ($exceptions as $cfl => $count) {
+            $repetitiveException = RepetitiveExceptionModel::where('cfl', $cfl)
+                ->where('is_solved', false)
+                ->first();
+            if ($count >= config('laravel-exception-analyzer.AMOUNT_OF_EXCEPTIONS_WITH_IN_TIME',5)
+            || $repetitiveException) {
+                // Find all Structured exceptions within config time frame with cfl
+                $structuredExceptions = StructuredExceptionModel::where('cfl', $cfl)
+                    ->where('created_at', '>',
+                        now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5))
+                    )
+                    ->whereNull('repetitive_exception_id')
+                    ->get()
+                    ->toArray();
+                // Combine their short texts, long texts and is_internal and severity using AI
 
+                // Upload repetitive exception to database
+                if (!$repetitiveException) {
+                    $combinedStructuredExceptions = $this->structuredExceptionCombiner($structuredExceptions);
+                    $repetitiveExceptionData = $aiClient->combineStructuredExceptionsToRepetitiveException($combinedStructuredExceptions);
+
+                    $repetitiveException = RepetitiveExceptionModel::create([
+                        'cfl' => $cfl,
+                        'is_solved' => false,
+                        'short_error_message' => $repetitiveExceptionData['short_error_message'],
+                        'detailed_error_message' => $repetitiveExceptionData['detailed_error_message'],
+                        'occurrence_count' => $count,
+                        'is_internal' => $repetitiveExceptionData['is_internal'],
+                        'severity' => $repetitiveExceptionData['severity'],
+                    ]);
+                } else {
+                    $repetitiveException->increment('occurrence_count', $count);
+                }
+                // Update all refences for structured exceptions to point to repetitive exception
+                StructuredExceptionModel::where('cfl', $cfl)
+                    ->whereNull('repetitive_exception_id')
+                    ->update(['repetitive_exception_id' => $repetitiveException->id]);
+            }
         }
-
-
     }
 
-    public function getExceptions(array $data): array
+    private function getExceptions(array $data, string $value): array
     {
         $exceptions = [];
         foreach ($data as $exception) {
-            if(isset($exception->cfl) ) {
-                $exceptions[$exception->cfl]++;
-                continue;
+            if (isset($exceptions[$exception[$value]])) {
+                $exceptions[$exception[$value]]++;
+            } else {
+                $exceptions[$exception[$value]] = 1;
             }
-            $exceptions[$exception->cfl] = 1;
         }
         return $exceptions;
+    }
 
+    private function structuredExceptionCombiner(array $structuredExceptions): array
+    {
+        $combinedStructuredExceptions = [];
+        foreach ($structuredExceptions as $structuredException) {
+            $combinedStructuredExceptions['short_error_messages'][] = $structuredException['concrete_error_message'];
+            $combinedStructuredExceptions['detailed_error_messages'][] = $structuredException['full_readable_error_message'];
+            $combinedStructuredExceptions['is_internal'][] = $structuredException['is_internal'];
+            $combinedStructuredExceptions['severity'][] = $structuredException['severity'];
+    }
+        return $combinedStructuredExceptions;
     }
 
 }
