@@ -4,6 +4,7 @@ namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use LaravelExceptionAnalyzer\Clients\ReportClient;
+use LaravelExceptionAnalyzer\Commands\ExceptionAnalyzerCommand;
 use LaravelExceptionAnalyzer\Facades\LaravelExceptionAnalyzer;
 use LaravelExceptionAnalyzer\Commands\SlackTestCommand;
 use LaravelExceptionAnalyzer\Commands\AIClientCommand;
@@ -77,15 +78,11 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             ->name('laravel-exception-analyzer')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigrations(
-                'create_exception_analyzer_table',
-                'create_structured_exception_table',
-                'add_to_structured_exception_table'
-            )
             ->hasCommands(
                 LaravelExceptionAnalyzerCommand::class,
                 SlackTestCommand::class,
-                AIClientCommand::class);
+                AIClientCommand::class,
+                ExceptionAnalyzerCommand::class);
     }
 
     public function register(): void
@@ -108,13 +105,8 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
     {
         parent::boot();
 
-//         Publish the entire migrations directory so vendor:publish copies real migration files
-        $this->publishes([
-            __DIR__ . '/../database/migrations/' => database_path('migrations'),
-        ], 'migrations');
-
         // Allow Laravel to load migrations directly from the package (no publish required)
-//        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Optionally load views if you want package views available without publishing
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'exception-analyzer');

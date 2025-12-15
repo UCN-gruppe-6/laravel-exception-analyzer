@@ -21,6 +21,8 @@ class StructuredExceptionModel extends Model
             'file_name',
             'line_number',
             'cfl',
+            'repetitive_exception_id',
+            'repetitive_exception_id'
         ];
 
     protected $casts = [
