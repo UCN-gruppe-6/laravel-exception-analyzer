@@ -40,10 +40,22 @@ class ReportClient
 
         $result = $aiClient->classify($exception);
 
+//        if ($result !== null) {
+//            logger()->info('AI classified exception', [
+//                'exception'      => $exception,
+//                'classification' => $result->toArray(),
+//            ]);
+//        }
+
         if ($result !== null) {
+
+            $classification = is_array($result)
+                ? $result
+                : (method_exists($result, 'toArray') ? $result->toArray() : (array) $result);
+
             logger()->info('AI classified exception', [
                 'exception'      => $exception,
-                'classification' => $result->toArray(),
+                'classification' => $classification,
             ]);
         }
     }
