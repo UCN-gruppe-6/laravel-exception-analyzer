@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Laravel Exception Analyzer Service Provider model
+ *
+ * In our system, this provider is what makes the whole package actually work:
+ * - it registers config + views + migrations + commands
+ * - it registers internal services into Laravel’s container
+ * - It hooks our analyzer into Laravel’s exception handler
+ *
+ * Without this file:
+ * - the package wouldn't load its config
+ * - artisan wouldn't know about the commands
+ * - migrations wouldn't be available
+ * - and our analyzer would not receive real exceptions
+ */
+
 namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
@@ -15,26 +30,24 @@ use LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
 use LaravelExceptionAnalyzer\AI\ExceptionSanitizer;
 use LaravelExceptionAnalyzer\AI\AiClient;
 
-/**
- * LaravelExceptionAnalyzerServiceProvider
- *
- * This is the main service provider for the package.
- */
 class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
 {
     /**
+     * Registering Package
+     *
+     * This is where we tell Laravel's container: "If someone asks for X class, here is how to create it."
      * Register all internal services and bind them into the container.
      *
-     * The order of registration matters:
-     * - ExceptionSanitizer → used by
-     * - AiClient → used by
-     * - ReportClient → used by
-     * - LaravelExceptionAnalyzer (main service)
+     *  The order of registration matters:
+     *  - ExceptionSanitizer -> used by
+     *  - AiClient -> used by
+     *  - ReportClient -> used by
+     *  - LaravelExceptionAnalyzer (main service)
      */
-    public function registeringPackage():void
+    public function registeringPackage(): void
     {
         /**
-         * 1. Register the ExceptionSanitizer.
+         * 1. Register the ExceptionSanitizer as a singleton
          */
         $this->app->singleton(ExceptionSanitizer::class);
 
@@ -68,6 +81,17 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
 //            );
 //        });
     }
+
+    /**
+     * Configure Package
+     *
+     * This configures what the package "brings with it":
+     * - config file
+     * - views
+     * - artisan commands
+     *
+     * Spatie Laravel Package Tools makes this setup cleaner.
+     */
     public function configurePackage(Package $package): void
     {
         /*
@@ -77,8 +101,16 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-exception-analyzer')
+            // Makes config('laravel-exception-analyzer...') available
             ->hasConfigFile()
+            // Allows the package to provide Blade views if needed
             ->hasViews()
+            /**
+             * Register Artisan commands shipped with the package.
+             * In our system these commands are part of the background pipeline:
+             * - test commands (SlackTestCommand, AIClientCommand)
+             * - pipeline commands (ExceptionAnalyzerCommand, ResolveRepetitiveExceptionsCommand)
+             */
             ->hasCommands(
                 LaravelExceptionAnalyzerCommand::class,
                 SlackTestCommand::class,
@@ -87,6 +119,17 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
                 ResolveRepetitiveExceptionsCommand::class);
     }
 
+    /**
+     * Register()
+     *
+     * Runs early in the boot process.
+     * This is where we merge our package config into the app config
+     * so config() calls work even if the config file is not published.
+     *
+     * In our system we merge:
+     * - laravel-exception-analyzer.php (our package settings)
+     * - prism.php (AI provider settings used by AiClient / Prism)
+     */
     public function register(): void
     {
         parent::register();
@@ -97,12 +140,23 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
             'laravel-exception-analyzer'
         );
 
+        // Make Prism config available as config('prism')
         $this->mergeConfigFrom(
             __DIR__ . '/../config/prism.php',
             'prism'
         );
     }
 
+    /**
+     * Boot()
+     *
+     * boot() runs after all providers are registered.
+     *
+     * This is where we connect the package into the running application:
+     * - load migrations
+     * - load views
+     * - hook the analyzer into Laravel's exception handler
+     */
     public function boot(): void
     {
         parent::boot();
@@ -113,6 +167,14 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
         // Optionally load views if you want package views available without publishing
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'exception-analyzer');
 
+        /**
+         * Hook our analyzer into Laravel's exception handler.
+         * This is what makes real runtime exceptions enter our pipeline.
+         *
+         * Without this line:
+         * - exceptions would still exist in Laravel
+         * - but our package would never be told about them
+         */
         $handler = app(ExceptionHandler::class);
         LaravelExceptionAnalyzer::handles($handler);
     }
