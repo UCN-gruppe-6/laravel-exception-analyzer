@@ -1,17 +1,24 @@
 <?php
 
-
-namespace LaravelExceptionAnalyzer\AI;
-
 /**
  * ExceptionSanitizer
  *
- * Responsible for extracting and cleaning exception data before it is sent
- * to the external AI service. This ensures that only safe, non-sensitive,
- * and relevant information leaves the application.
+ * This class exists to control what exception data is allowed
+ * to leave the application when we send something to an AI service.
+ *
+ * This ensures that only safe, non-sensitive and relevant information leaves the application.
  */
+
+namespace LaravelExceptionAnalyzer\AI;
+
 class ExceptionSanitizer
 {
+    /**
+     * Takes a raw exception array and extracts only the fields
+     * that the AI needs to understand the problem.
+     *
+     * Everything else is intentionally left out.
+     */
     public static function sanitize(array $exception): array
     {
         return [
