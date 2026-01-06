@@ -17,6 +17,8 @@ return [
     'CHECK_EXCEPTION_WITH_IN_MINUTES' => env('LEA_CHECK_EXCEPTION_WITH_IN_MINUTES', 5),
     'AMOUNT_OF_EXCEPTIONS_WITH_IN_TIME' => env('LEA_AMOUNT_OF_EXCEPTIONS_WITH_IN_TIME', 5),
 
+    'REPORT_EXCEPTIONS_API_URL' => env('LEA_REPORT_EXCEPTIONS_API_URL', null),
+
     'ignore' => [
         // \Illuminate\Validation\ValidationException::class,
     ],

@@ -2,8 +2,6 @@
 
 namespace LaravelExceptionAnalyzer\Controller;
 
-use Illuminate\Support\Facades\Log;
-use LaravelExceptionAnalyzer\AI\AiClient;
 use LaravelExceptionAnalyzer\Models\RepetitiveExceptionModel;
 use LaravelExceptionAnalyzer\Models\StructuredExceptionModel;
 
@@ -19,7 +17,6 @@ class ExceptionAnalyzerController
 
     public function analyze(): void
     {
-        $aiClient = app(AiClient::class);
         $data = StructuredExceptionModel::where('created_at', '>',
             now()->subMinutes(config('laravel-exception-analyzer.CHECK_EXCEPTION_WITH_IN_MINUTES',5)))
             ->where('repetitive_exception_id', null)

@@ -2,11 +2,6 @@
 
 namespace LaravelExceptionAnalyzer\Clients;
 
-use Illuminate\Support\Facades\Auth;
-use LaravelExceptionAnalyzer\Models\ExceptionModel;
-use Throwable;
-use LaravelExceptionAnalyzer\AI\AiClient;
-
 /**
  * ReportClient
  *
@@ -19,57 +14,7 @@ use LaravelExceptionAnalyzer\AI\AiClient;
  */
 class ReportClient
 {
-
-    public static function report(Throwable $e): void
-    {
-        $exception = self::createExceptionArray($e);
-
-        if (config('REPORT_EXCEPTIONS_API_URL') === false) {
-            // Not yet implemented
-            self::sendToExternalService($exception);
-
-            return;
-        }
-
-        ExceptionModel::create(
-            $exception
-        );
-
-        /** @var AiClient $aiClient */
-        $aiClient = app(AiClient::class);
-
-        $result = $aiClient->classify($exception);
-
-        if ($result !== null) {
-            logger()->info('AI classified exception', [
-                'exception'      => $exception,
-                'classification' => $result->toArray(),
-            ]);
-        }
-    }
-
-    private static function createExceptionArray(Throwable $exception): array
-    {
-        $user = Auth::user();
-
-        return [
-            'message' => $exception->getMessage(),
-            'type' => get_class($exception),
-            'code' => (string)$exception->getCode(),
-            'file' => $exception->getFile(),
-            'line' => $exception->getLine(),
-            'url' => request()->fullUrl() ?? null,
-            'hostname' => gethostname() ?: 'unknown',
-            'stack_trace' => $exception->getTraceAsString(),
-            'user_id' => $user?->id ?? null,
-            'user_email' => $user?->email ?? null,
-            'session_id' => session()->getId() ?? null,
-            'level' => '', // #TODO: Determine how to set the level
-            'created_at' => now(),
-        ];
-    }
-
-    private static function sendToExternalService(array $exception): void
+    public static function sendToExternalService(array $exception): void
     {
         // Implement sending to an external service if needed.
     }

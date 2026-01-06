@@ -13,7 +13,6 @@ class ExceptionAnalyzerCommand extends Command
 
     public function handle(): void
     {
-        Log::info("Starting Exception Analysis via Command...");
         $controller = app(ExceptionAnalyzerController::class);
         $controller->analyze();
     }
