@@ -4,6 +4,7 @@ namespace LaravelExceptionAnalyzer\Controller;
 
 use LaravelExceptionAnalyzer\Models\RepetitiveExceptionModel;
 use LaravelExceptionAnalyzer\Models\StructuredExceptionModel;
+use LaravelExceptionAnalyzer\Controller\SlackController;
 
 class ExceptionAnalyzerController
 {
@@ -39,6 +40,7 @@ class ExceptionAnalyzerController
                     ->toArray();
                 // Combine their short texts, long texts and is_internal and severity using AI
 
+
                 // Upload repetitive exception to database
                 if (!$repetitiveException) {
                     $combinedStructuredExceptions = $this->structuredExceptionCombiner($structuredExceptions);
@@ -53,6 +55,10 @@ class ExceptionAnalyzerController
                         'severity' => $repetitiveExceptionData['severity'],
                         'carrier' => $repetitiveExceptionData['carrier'],
                     ]);
+
+                    app(SlackController::class)
+                        ->sendRepetitiveExceptionToSlack($repetitiveException);
+
                 } else {
                     $repetitiveException->increment('occurrence_count', $count);
                 }
