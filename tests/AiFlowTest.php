@@ -3,9 +3,7 @@
 namespace NikolajVE\LaravelExceptionAnalyzer\Tests;
 
 use Illuminate\Support\Facades\Http;
-use LaravelExceptionAnalyzer\AI\AiClient;
 use NikolajVE\LaravelExceptionAnalyzer\LaravelExceptionAnalyzer;
-use Throwable;
 
 it('classifies an exception via AI and goes through the full flow', function () {
     // 1) Sæt config direkte (ingen .env nødvendig)
@@ -35,7 +33,7 @@ it('classifies an exception via AI and goes through the full flow', function () 
     $analyzer = app(LaravelExceptionAnalyzer::class);
 
     // 5) Kald report() – det går gennem:
-    // LaravelExceptionAnalyzer → ReportClient → AiClient → Http::fake()
+    // LaravelExceptionAnalyzer → ReportClient → AIClient → Http::fake()
     $analyzer->report($exception);
 
     // 6) Assert at HTTP-kaldet rent faktisk blev lavet korrekt
