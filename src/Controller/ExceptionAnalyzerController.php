@@ -9,6 +9,14 @@ use LaravelExceptionAnalyzer\Models\StructuredExceptionModel;
 
 class ExceptionAnalyzerController
 {
+    private array $repetitiveFields = [
+        'short_error_messages',
+        'detailed_error_messages',
+        'is_internal',
+        'severity',
+        'carrier',
+    ];
+
     public function analyze(): void
     {
         $aiClient = app(AiClient::class);
@@ -37,13 +45,12 @@ class ExceptionAnalyzerController
                 // Upload repetitive exception to database
                 if (!$repetitiveException) {
                     $combinedStructuredExceptions = $this->structuredExceptionCombiner($structuredExceptions);
-                    $repetitiveExceptionData = $aiClient->combineStructuredExceptionsToRepetitiveException($combinedStructuredExceptions);
-
+                    $repetitiveExceptionData = $this->combineStructuredExceptionsToRepetitiveException($combinedStructuredExceptions);
                     $repetitiveException = RepetitiveExceptionModel::create([
                         'cfl' => $cfl,
                         'is_solved' => false,
-                        'short_error_message' => $repetitiveExceptionData['short_error_message'],
-                        'detailed_error_message' => $repetitiveExceptionData['detailed_error_message'],
+                        'short_error_message' => $repetitiveExceptionData['short_error_messages'],
+                        'detailed_error_message' => $repetitiveExceptionData['detailed_error_messages'],
                         'occurrence_count' => $count,
                         'is_internal' => $repetitiveExceptionData['is_internal'],
                         'severity' => $repetitiveExceptionData['severity'],
@@ -101,6 +108,30 @@ class ExceptionAnalyzerController
             $combinedStructuredExceptions['carrier'][] = $structuredException['affected_carrier'];
     }
         return $combinedStructuredExceptions;
+    }
+
+    private function combineStructuredExceptionsToRepetitiveException(array $combinedStructuredExceptions)
+    {
+        $result = [];
+        foreach ($this->repetitiveFields as $field) {
+            $repetitiveField = $this->getRepetitiveFieldsCount($combinedStructuredExceptions[$field]);
+            arsort($repetitiveField);
+            $result[$field] = array_key_first($repetitiveField);
+        }
+        return $result;
+    }
+
+    private function getRepetitiveFieldsCount(array $data): array
+    {
+        $exceptions = [];
+        foreach ($data as $exception) {
+            if (isset($exceptions[$exception])) {
+                $exceptions[$exception]++;
+            } else {
+                $exceptions[$exception] = 1;
+            }
+        }
+        return $exceptions;
     }
 
 }
