@@ -93,7 +93,6 @@ class SlackController
     public function sendRepetitiveExceptionToSlack(RepetitiveExceptionModel $exception): void
     {
         $payload = self::transformRepetitiveToPayload($exception);
-
         $client = app(SlackClient::class);
         $client->sendMessageToSlack($payload);
     }
