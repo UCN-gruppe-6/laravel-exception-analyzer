@@ -90,15 +90,15 @@ class ExceptionAnalyzerController
 
     private function countOccurrencesByKey(array $data, string $value): array
     {
-        $exceptions = [];
-        foreach ($data as $exception) {
-            if (isset($exceptions[$exception[$value]])) {
-                $exceptions[$exception[$value]]++;
+        $counts = [];
+        foreach ($data as $item) {
+            if (isset($counts[$item[$value]])) {
+                $counts[$item[$value]]++;
             } else {
-                $exceptions[$exception[$value]] = 1;
+                $counts[$item[$value]] = 1;
             }
         }
-        return $exceptions;
+        return $counts;
     }
 
 }
