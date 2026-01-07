@@ -23,7 +23,6 @@ class SlackClient
     public function sendMessageToSlack(array $payload): void
     {
         try {
-
            $this->httpClient->post(
                 config('laravel-exception-analyzer.SLACK_WEBHOOK_URL',
                 env('LEA_SLACK_WEBHOOK_URL')),
@@ -34,9 +33,7 @@ class SlackClient
                         'json' => $payload
                     ]
             );
-
         } catch (GuzzleException $e) {
-
             report($e);
         }
     }

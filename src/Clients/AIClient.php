@@ -90,7 +90,7 @@ class AIClient
                 ->withPrompt($prompt)
                 ->withClientOptions(
                     [
-                        'timeout' => 1,
+                        'timeout' => 300,
                     ]
                 )
                 ->asStructured();
