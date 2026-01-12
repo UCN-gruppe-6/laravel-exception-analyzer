@@ -1,6 +1,26 @@
 <?php
-
-
+    /**
+     * AiClient
+     *
+     * This class is the “AI connector” in our exception system.
+     *
+     * Our system stores raw exceptions in the database, then turns them into
+     * structured exceptions that are easier to read and work with.
+     * Instead of hand-writing all classification rules (carrier, severity,
+     * short message, etc.), we let an AI model do that work.
+     *
+     * So this class has one job:
+     * - send exception data to the AI
+     * - force the AI to answer in a strict JSON format (schema)
+     * - return that structured result back to our pipeline
+     *
+     * This class does NOT:
+     * - catch exceptions
+     * - store things in the database
+     * - update models directly
+     *
+     * It only communicates with the AI and returns AIs output.
+     */
 namespace LaravelExceptionAnalyzer\Clients;
 
 use Illuminate\Support\Facades\Log;
@@ -15,17 +35,19 @@ use Prism\Prism\Schema\EnumSchema;
 use Prism\Prism\Schema\NumberSchema;
 use Prism\Prism\Schema\ObjectSchema;
 use Prism\Prism\Schema\StringSchema;
-
-/**
- * AIClient
- *
- * Responsible for sending sanitized exception data to the external AI service
- * and converting the response into a structured AiClassificationResult.
- *
- * This class acts as the communication layer between the package and the AI model.
- */
 class AIClient
 {
+    /**
+     * CreateClfFromResponse
+     *
+     * We generate a CFL string that works like a simple fingerprint.
+     * The goal is to have a stable value we can use to group exceptions
+     * that are basically the "same kind of problem".
+     *
+     * In our system, we build it from: carrier + file name + line number
+     * That gives us something like: GLS-CarrierService-142
+     * This is later used to connect / group exceptions into repetitive issues.
+     */
     private static function createCflFromResponse(array $response): array
     {
         $data = $response;
@@ -36,7 +58,14 @@ class AIClient
     }
 
     /**
-     * Sends a sanitized exception to the AI service and returns the classification result.
+     * This is the "classify one exception" step.
+     *
+     * Input: one raw exception (as an array)
+     * Output: a structured classification result (as an array)
+     *         containing things like carrier, severity, readable messages, etc.
+     *
+     * If AI is not enabled or no API key is configured, we return null,
+     * because the pipeline should keep working even without AI.
      */
     public function classify(array $exceptionData): ?array
     {
@@ -48,6 +77,9 @@ class AIClient
             return null;
         }
 
+        /**
+         * 2. Define the exact JSON format we want back from the AI
+         */
         $schema = new ObjectSchema(
             name: 'exception_classification',
             description: 'Classification of a Laravel exception',
@@ -67,6 +99,14 @@ class AIClient
             requiredFields: ['affected_carrier', 'is_internal', 'severity', 'concrete_error_message', 'full_readable_error_message', 'exception_id', 'user_id', 'line_number', 'code', 'type', 'file_name']
         );
 
+        /**
+         * 3. Build a prompt that tells the AI exactly how to behave
+         *
+         * Important:
+         * - We demand only JSON output (no explanation)
+         * - We restate the rules for fields that often go wrong
+         * - We attach the exception as JSON at the end
+         */
         $prompt = "
         You are an exception classification engine.
         Return exactly one JSON object matching the schema below and nothing else. Do not include any explanation, text, code fences or extra fields.
@@ -83,7 +123,10 @@ class AIClient
             Exception:
             " . json_encode($exceptionData, JSON_PRETTY_PRINT);
 
-
+            /**
+             * 4. Send the prompt + schema to the AI provider via Prism
+             * Prism is the library that handles the actual AI call.
+             */
             $response = Prism::structured()
                 ->using(Provider::Ollama, 'mistral:latest')
                 ->withSchema($schema)
@@ -95,8 +138,15 @@ class AIClient
                 )
                 ->asStructured();
 
+            /**
+             * 5. Log what the AI returned
+             */
             Log::info('AI Response: ' . json_encode($response->structured, JSON_PRETTY_PRINT));
 
+            /**
+             * 6. Add our CFL fingerprint and return the final structured array
+             * The CFL is used later to group exceptions into repetitive exceptions.
+             */
             return self::createCflFromResponse($response->structured);
     }
 }

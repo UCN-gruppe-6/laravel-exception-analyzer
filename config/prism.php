@@ -1,11 +1,36 @@
 <?php
-
+    /**
+     * Prism
+     *
+     * This file defines how our application talks to different AI providers.
+     *
+     * Instead of hardcoding API keys, URLs, or provider-specific settings,
+     * everything is collected here and controlled through environment variables.
+     *
+     * This makes it easy to:
+     * - switch AI providers without changing code
+     * - enable or disable features per environment
+     * - keep secrets out of the repository
+     *
+     * In our system, this configuration supports the part of the
+     * exception pipeline where exceptions can be analyzed or classified by AI.
+     */
 return [
+    // Prism server settings
     'prism_server' => [
         // The middleware that will be applied to the Prism Server routes.
         'middleware' => [],
         'enabled' => env('PRISM_SERVER_ENABLED', false),
     ],
+    /**
+     * AI provider
+     *
+     * Each provider listed here represents a possible AI backend that the system can use.
+     * Only the providers that have valid API keys configured will actually be usable.
+     *
+     * This setup allows the system to remain provider-agnostic:
+     * switching provider does not require code changes, only configuration changes.
+     */
     'providers' => [
         'openai' => [
             'url' => env('OPENAI_URL', 'https://api.openai.com/v1'),
@@ -13,6 +38,8 @@ return [
             'organization' => env('OPENAI_ORGANIZATION', null),
             'project' => env('OPENAI_PROJECT', null),
         ],
+
+        /** Claude */
         'anthropic' => [
             'api_key' => env('ANTHROPIC_API_KEY', ''),
             'version' => env('ANTHROPIC_API_VERSION', '2023-06-01'),

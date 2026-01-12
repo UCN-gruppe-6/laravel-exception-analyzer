@@ -1,11 +1,32 @@
 <?php
-
+    /**
+     * Create exception analyzer table
+     *
+     * This migration creates the "exceptions" table.
+     * This table stores RAW exception data exactly as it occurs
+     * in the application.
+     *
+     * It is meant to capture:
+     * - what went wrong
+     * - where it went wrong
+     * - who was affected
+     * - and under which conditions
+     *
+     * This table represents the lowest level of error storage
+     * in the system.
+     */
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migration.
+     *
+     * This method creates the database table and defines
+     * which data we store for each exception.
+     */
     public function up()
     {
         Schema::create('exceptions', function (Blueprint $table) {
@@ -26,6 +47,11 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Reverse the migration.
+     *
+     * This drops the table if the migration is rolled back.
+     */
     public function down()
     {
         Schema::dropIfExists('exceptions');

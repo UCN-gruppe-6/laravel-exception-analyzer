@@ -1,5 +1,19 @@
 <?php
-
+    /**
+     * Laravel Exception Analyzer Service Provider
+     *
+     * This service provider is the central piece that makes the Laravel Exception Analyzer package work.
+     * It is responsible for:
+     * - Registering the package's configuration, views, migrations, and commands
+     * - Registering internal services into Laravel's service container
+     * - Hooking the analyzer into Laravel's global exception handler
+     *
+     * Without this service provider:
+     * - The package's config wouldn't be loaded
+     * - Artisan wouldn't recognize the package commands
+     * - Migrations wouldn't be available
+     * - Exceptions from the host application would not be captured and analyzed
+     */
 namespace LaravelExceptionAnalyzer;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
@@ -19,13 +33,12 @@ use LaravelExceptionAnalyzer\Commands\LaravelExceptionAnalyzerCommand;
  */
 class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
 {
+    /**
+     * Configure the package using Spatie's PackageTools.
+     * This registers the package name, config files, views, and commands.
+     */
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('laravel-exception-analyzer')
             ->hasConfigFile()
@@ -37,6 +50,12 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
                 ResolveRepetitiveExceptionsCommand::class);
     }
 
+    /**
+     * Register package services.
+     *
+     * Ensures that package configuration is merged into Laravel's config system
+     * so that it can be accessed via `config('laravel-exception-analyzer')`.
+     */
     public function register(): void
     {
         parent::register();
@@ -53,6 +72,12 @@ class LaravelExceptionAnalyzerServiceProvider extends PackageServiceProvider
         );
     }
 
+    /**
+     * Boot the package.
+     *
+     * Loads migrations directly from the package so developers don't need to publish them.
+     * Also hooks the package into Laravel's global exception handler using the facade.
+     */
     public function boot(): void
     {
         parent::boot();
