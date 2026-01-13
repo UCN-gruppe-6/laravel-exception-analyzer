@@ -128,7 +128,7 @@ class AIClient
              * Prism is the library that handles the actual AI call.
              */
             $response = Prism::structured()
-                ->using(Provider::Ollama, 'mistral:latest')
+                ->using($this->getProviderFromConfig(), config('laravel-exception-analyzer.AI_MODEL', 'mistral:latest'))
                 ->withSchema($schema)
                 ->withPrompt($prompt)
                 ->withClientOptions(
@@ -139,14 +139,28 @@ class AIClient
                 ->asStructured();
 
             /**
-             * 5. Log what the AI returned
-             */
-            Log::info('AI Response: ' . json_encode($response->structured, JSON_PRETTY_PRINT));
-
-            /**
              * 6. Add our CFL fingerprint and return the final structured array
              * The CFL is used later to group exceptions into repetitive exceptions.
              */
             return self::createCflFromResponse($response->structured);
+    }
+
+    private function getProviderFromConfig()
+    {
+        $provider = config('laravel-exception-analyzer.AI_PROVIDER', 'ollama');
+        return match (strtolower($provider)) {
+            'anthropic' => Provider::Anthropic,
+            'ollama' => Provider::Ollama,
+            'openai' => Provider::OpenAI,
+            'deepseek' => Provider::DeepSeek,
+            'elevenlabs' => Provider::ElevenLabs,
+            'gemini' => Provider::Gemini,
+            'groq' => Provider::Groq,
+            'mistral' => Provider::Mistral,
+            'openrouter' => Provider::OpenRouter,
+            'xai' => Provider::XAI,
+            'voyageai' => Provider::VoyageAI,
+            default => Provider::OpenAI
+        };
     }
 }
