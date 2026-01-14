@@ -15,6 +15,7 @@ namespace LaravelExceptionAnalyzer\Commands;
 
 use Illuminate\Console\Command;
 use LaravelExceptionAnalyzer\Controller\SlackController;
+use LaravelExceptionAnalyzer\Models\RepetitiveExceptionModel;
 
 class SlackTestCommand extends Command
 {
@@ -31,7 +32,8 @@ class SlackTestCommand extends Command
      */
     public function handle(): void
     {
+        $exception = RepetitiveExceptionModel::where('id', 1)->first();
         $controller = app(SlackController::class);
-        $controller->sendMessageToSlack("This is a test exception message from SlackTestCommand.", "This is a test AI analysis message from SlackTestCommand.");
+        $controller->sendRepetitiveExceptionToSlack( $exception );
     }
 }

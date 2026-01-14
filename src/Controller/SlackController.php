@@ -57,39 +57,67 @@ class SlackController
     {
         return [
             'blocks' => [
-                // Bold label above header
                 [
-                    'type' => 'section',
-                    'text' => [
-                        'type' => 'mrkdwn',
-                        'text' => "*Short message:*",
-                    ],
+                    'type' => 'divider'
                 ],
-                // Header block (big text)
                 [
                     'type' => 'header',
                     'text' => [
                         'type' => 'plain_text',
                         'text' => $exception->short_error_message,
-                    ],
+                        'emoji' => true
+                    ]
                 ],
-                // Details section
+                [
+                    'type' => 'section',
+                    'fields' => [
+                        [
+                            'type' => 'mrkdwn',
+                            'text' => '*Severity:*' . PHP_EOL . self::getSeverityEmoji($exception->severity) ." ".
+                                $exception->severity,
+                        ],
+                        [
+                            'type' => 'mrkdwn',
+                            'text' => '*Internal Error:*' . PHP_EOL .
+                                ($exception->is_internal ? 'Yes' : 'No')
+                        ]
+                    ]
+                ],
+                [
+                    'type' => 'section',
+                    'fields' => [
+                        [
+                            'type' => 'mrkdwn',
+                            'text' => '*Carrier:*' . PHP_EOL .
+                                $exception->carrier
+                        ],
+                        [
+                            'type' => 'mrkdwn',
+                            'text' => '*Error Count:*' . PHP_EOL .
+                                $exception->occurrence_count
+                        ]
+                    ]
+                ],
                 [
                     'type' => 'section',
                     'text' => [
                         'type' => 'mrkdwn',
-                        'text' => "*Details:*\n{$exception->detailed_error_message}\n\n" .
-                            "*Severity:* " . self::getSeverityEmoji($exception->severity) . " {$exception->severity}\n" .
-                            "*Internal:* " . ($exception->is_internal ? 'Yes' : 'No') . "\n" .
-                            "*Carrier:* {$exception->carrier}\n" .
-                            "*Occurrences:* {$exception->occurrence_count}\n" .
-                            "*Solved:* " . ($exception->is_solved ? 'Yes' : 'No') . "\n" .
-                            "*Last updated:* {$exception->updated_at}",
-                    ],
+                        'text' => '*Detailed Error Message:*' . PHP_EOL .
+                            $exception->detailed_error_message
+                    ]
                 ],
-            ],
+                [
+                    'type' => 'context',
+                    'elements' => [
+                        [
+                            'type' => 'plain_text',
+                            'text' => $exception->cfl,
+                            'emoji' => true
+                        ]
+                    ]
+                ]
+            ]
         ];
-
     }
 
 
